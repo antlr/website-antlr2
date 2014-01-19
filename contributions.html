@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>Innovations and Contributions to Computer Science</title>
+</head>
+<body bgcolor="#FFFFFF">
+    <i>by Terence Parr</i><br>
+    <small>February 1999</small></em><br><br>
+    A researcher once told me after a talk I'd
+    given that &quot;It was clear that a single mind was behind these tools.&quot;&nbsp; In
+    reality, there are many minds behind the ideas in my language tools and research.&nbsp; At
+    the very least, there are hundreds of people that let me bounce ideas off of them. &nbsp;
+    Please see the <a href="history.html">history</a> for some of these names.</small></font><p><font
+    face="Arial"><small>That said, ANTLR differs fundamentally from most other research
+    projects--my single voice has dictated the direction, coding, and philosophy for its ten
+    year history.&nbsp; Too many promising projects wither and die after a student or
+    professor leaves the project.&nbsp; The opposite can happen as well.&nbsp; Some projects
+    suffer because 20 students have come through and added a bunch of random junk.</small></font></p>
+    <p><font face="Arial"><small>The focus of my efforts has been helping the common
+    programmer solve real recognition and translation problems.&nbsp; This means that ANTLR
+    must be lean, fast, powerful, and most importantly must employ mechanisms that average
+    programmers understand.&nbsp; All additions and changes to ANTLR are evaluated in light of
+    this mission.</small></font></p>
+    <p><font face="Arial"><small>In this document, I list the major innovations and
+    contributions of ANTLR.&nbsp; I am pleased to see a shift in the industry towards LL(k)
+    parsing and to see that other tools are using some of ANTLR's technology and ideas.</small></font><ol>
+      <li><a href="#Linear Approximate Lookahead"><font face="Arial"><small>Linear Approximate
+        Lookahead</small></font></a></li>
+      <li><a href="#Predicated Parsing"><font face="Arial"><small>Predicated Parsing</small></font></a><ul>
+          <li><a href="#Semantic Predicates"><font face="Arial"><small>Semantic&nbsp;Predicates</small></font></a></li>
+          <li><a href="#Syntactic Predicates"><font face="Arial"><small>Syntactic Predicates</small></font></a></li>
+        </ul>
+      </li>
+      <li><a href="#Tree Construction"><font face="Arial"><small>Tree Construction</small></font></a></li>
+      <li><a href="#Tree Grammars and Parsing"><font face="Arial"><small>Tree Grammars and Parsing</small></font></a></li>
+      <li><a href="#Error Handling"><font face="Arial"><small>Error Handling</small></font></a></li>
+      <li><a href="#Lexing=Parsing=Tree Parsing"><font face="Arial"><small>Lexing=Parsing=Tree
+        Parsing</small></font></a></li>
+      <li><a href="#Top-down Lexer Generator"><font face="Arial"><small>Top-down Lexer Generator</small></font></a></li>
+      <li><a href="#Token Streams"><font face="Arial"><small>Token Streams</small></font></a></li>
+    </ol>
+    <h3><a name="Linear Approximate Lookahead"><font face="Arial"><small>Linear Approximate
+    Lookahead</small></font></a></h3>
+    <p><font face="Arial"><small>In theory, computing lookahead sets for LL(k) parsers for
+    k&gt;1 is easy.&nbsp; It sure is if you simply write out the definitions or algorithms in
+    a book using FIRST/FOLLOW notation.&nbsp; At the point I started thinking about k&gt;1
+    lookahead, I had only seen real algorithms for k=1.&nbsp; I had a heck of a time computing
+    lookahead sets even by hand for k&gt;1 for simple grammars.</small></font></p>
+    <p><font face="Arial"><small>In August 1990, right before I started my Ph.D. at Purdue
+    University, I drew out a funny looking syntax diagram / pushdown automata from a grammar.
+    &nbsp; Once built, I realized that the data structure was just what I needed and after
+    playing around I realized that computing lookahead sets was no more complicated than a
+    bounded NFA-to-DFA conversion!&nbsp; Lookahead sets were, in fact, DFAs that generated
+    finite lookahead languages.&nbsp; At any decision point, you can compute the lookahead
+    sets by walking the funny data structure and collecting the symbols you see up to depth k.</small></font></p>
+    <p><font face="Arial"><small>So I had a convenient data structure and slick algorithm.
+    &nbsp; Because I was blessed with ignorance, I erroneously defined lookahead such that all
+    symbols at depth n (1&lt;=n&lt;=k) were combined into a single set.&nbsp; So, lookahead
+    for k=4 was an array of 4 sets.&nbsp; While this is &quot;wrong&quot;, I had stumbled upon
+    my Ph.D. thesis.</small></font></p>
+    <p><font face="Arial"><small>No one had tried building k&gt;1 parsers before because the
+    problem was known to be exponentially complex.&nbsp; It takes O(|T|^k) space just to <strong>store</strong>
+    a single lookahead set where |T| is the size of the symbol vocabulary.&nbsp; My new
+    definition of lookahead, linear approximate lookahead as I would call it later, reduced
+    the complexity to O(|T|xk); in other words, the exponent became a multiplier!</small></font></p>
+    <p><font face="Arial"><small>Linear approximate lookahead, while drastically smaller and
+    faster to compute, renders your parser much weaker in theory.&nbsp; Fortunately, in
+    practice I showed that full lookahead vs linear approximate lookahead almost never bought
+    you anything; perhaps 5% more strength.&nbsp; To grab that last 5%, I found a way to use
+    the linear approximate lookahead to attenuate the cost of doing full lookahead.&nbsp; In
+    late 1991, I released PCCTS 1.00, the first practical LL(k) parser generator for k&gt;1.</small></font></p>
+    <p><font face="Arial"><small>At the time of this writing, Josef Grosch has decoded my
+    thesis and implemented k&gt;1 lookahead in his CoCo LR-based parser generator.&nbsp; Also,
+    Etienne Gagnon is looking into k&gt;1 lookahead for SableCC.&nbsp; JavaCC computes full
+    k&gt;1 lookahead without using linear approximate lookahead, but avoids the exponentiality
+    by letting the programmer specify the lookahead for any decision.</small></font></p>
+    <p><font face="Arial"><small>ANTLR 2 uses purely linear approximate lookahead.&nbsp; It
+    has bitten me only a few times, but I plan to implement full LL(k) lookahead in the
+    future.</small></font></p>
+    <h3><a name="Predicated Parsing"><font face="Arial"><small>Predicated Parsing</small></font></a></h3>
+    <p><font face="Arial"><small>LL(k)-based parsers are often weaker than LR(k)-based parsers
+    because LR parsers make decisions after having seen more of the input.&nbsp; On the other
+    hand, any deterministic parsing strategy can fail to handle some really nasty problems
+    such as those found when parsing C++.&nbsp; Furthermore, sometimes syntactic information
+    alone is insufficient to recognize certain language structures, namely context-sensitive
+    structures.&nbsp; While the underlying concepts were not new, (in 1993) I finalized some
+    nice extensions to semantic predicates and invented the idea of a syntactic predicate (an
+    infinite lookahead language operator).</small></font></p>
+    <h4><a name="Semantic Predicates"><font face="Arial"><small>Semantic Predicates</small></font></a></h4>
+    <p><font face="Arial"><small>Semantic predicates are run-time tests that can resolve
+    finite lookahead conflicts and syntactic ambiguities with semantic information.&nbsp; To
+    my knowledge, parser generators that allowed semantic predicates go way back to the late
+    1970s (though the concepts go back further).&nbsp; PCCTS's (ANTLR 1.xx) approach enhanced
+    semantic predicates as follows:</small></font><ul>
+      <li><font face="Arial"><small>PCCTS hoists predicates into other rules.</small></font></li>
+      <li><font face="Arial"><small>PCCTS automatically determines if a predicate should be
+        hoisted into a parsing decision.</small></font></li>
+      <li><font face="Arial"><small>PCCTS automatically determines the syntactic context in which
+        a predicate is valid.</small></font></li>
+    </ul>
+    <h4><a name="Syntactic Predicates"><font face="Arial"><small>Syntactic Predicates</small></font></a></h4>
+    <p><font face="Arial"><small>Syntactic predicates are grammar fragments that describe a
+    syntactic context that must be satisfied before application of an associated production is
+    authorized.&nbsp; Backtracking is an extremely common technique even in the parsing world,
+    however, backtracking parsers were not very useful prior to PCCTS.&nbsp; Parser generators
+    took the decision to backtrack out of the hands of the programmer--most of the parser
+    generators either backtracked all the time or none of the time.</small></font></p>
+    <p><font face="Arial"><small>PCCTS formalized the idea of selective backtracking as an
+    operator, a predicate, that let you resolve finite lookahead conflicts with a possibly
+    infinite, possibly nonregular, lookahead language.&nbsp; Importantly, PCCTS generates
+    hybrid finite/backtracking parsing decisions that avoid the backtrack when finite
+    lookahead provides an obvious path at parse-time.&nbsp; This hybrid approach significantly
+    reduces the amount of backtracking done by the parser.</small></font></p>
+    <h3><a name="Tree Construction"><font face="Arial"><small>Tree Construction</small></font></a></h3>
+    <p><font face="Arial"><small>At a boring parallel computing conference in 1991, I came up
+    with a really terse way to construct trees.&nbsp; Using two operators, ^ and !, I could
+    tell ANTLR how to generate trees for a surprisingly-large portion of my grammar.&nbsp; For
+    example, by suffixing the operator tokens in an expression grammar with a ^ operator, the
+    parser would build the usual abstract syntax trees.</small></font></p>
+    <h3><a name="Tree Grammars and Parsing"><font face="Arial"><small>Tree Grammars and
+    Parsing</small></font></a></h3>
+    <p><font face="Arial"><small>As a Ph.D. student and later as a postdoctoral fellow in 1993
+    at the Army High Performance Computing Research center at the U of MN, I built lots of
+    Fortran 77 translators.&nbsp; I had a parser construct a tree and then walked it with a
+    bunch of recursive routines.&nbsp; I did not use a generic depth-first tree walker
+    function because I needed lots of context information; e.g., was this ID node on the left
+    hand side of an assignment?</small></font></p>
+    <p><small><font face="Arial">After having built a number of these tree walking translation
+    phases, I realized that they were so mechanical that I could build them automatically!
+    &nbsp; Tree walking was nothing more than tree parsing and, hence, I should describe my
+    translation phases with a tree grammar.&nbsp; SORCERER, the first tree-parser generator
+    was born (though you can claim that LISP sort of does the same thing).&nbsp; The grammar
+    inheritance of ANTLR 2 makes building multiple-phase translation grammars even easier.</font></small></p>
+    <h3><a name="Error Handling"><font face="Arial"><small>Error Handling</small></font></a></h3>
+    <p><font face="Arial"><small>When I was consulting to NeXT computer (all hail Steve Jobs
+    and NeXT) in 1994 on their C++ parser, I had the (now obvious) idea that error handling
+    should mirror the functionality of exception handling.&nbsp; You could instruct the parser
+    to handle errors where it made the most sense as opposed to where the error was generated.
+    &nbsp; For example, it is better to say &quot;bad while-expression&quot; than &quot;error
+    in expression&quot;.</small></font></p>
+    <p><font face="Arial"><small>ANTLR has always been pretty good at automatic error recovery
+    (though there is much better research on the subject than I have implemented), but parser
+    exceptions gave a huge amount of control to the programmer.</small></font></p>
+    <h3><a name="Lexing=Parsing=Tree Parsing"><font face="Arial"><small>Lexing=Parsing=Tree
+    Parsing</small></font></a></h3>
+    <p><font face="Arial"><small>The YACC++ LR-based parser generator is the first tool I saw
+    that unified the specification of lexer and parser.&nbsp; You could reference characters
+    and tokens in the same grammar.&nbsp; That was many years ago.</small></font></p>
+    <p><font face="Arial"><small>ANTLR takes this a bit further to generalize the notion of
+    recognizing a stream of input whether that input be characters, tokens, or tree nodes.
+    &nbsp; Lexers, parsers, and tree parsers are specified using the same syntax and the same
+    code generator is used for all three!</small></font></p>
+    <h3><a name="Top-down Lexer Generator"><font face="Arial"><small>Top-down Lexer Generator</small></font></a></h3>
+    <p><font face="Arial"><small>While I remember discussing this idea as early as 1993/1994
+    at one of &quot;Dr. T's Traveling Parsing Revival and Beer Tasting Festivals&quot;, it was
+    not until 1997 that I implemented the idea of generating top-down lexers instead of DFAs.
+    &nbsp; Now, ANTLR-generated parsers <strong>and</strong> lexers look something like what
+    you would generate by hand.</small></font></p>
+    <h3><a name="Token Streams"><font face="Arial"><small>Token Streams</small></font></a></h3>
+    <p><small><font face="Arial">At the 1997 Dr. T's Traveling Parsing Revival and Beer
+    Tasting Festival (held at JavaSoft), Sriram Sankar gave a talk on JavaCC.&nbsp; He had a
+    nice trick (special tokens) to handle certain situations where you wanted to ignore but
+    not discard certain tokens in the input stream such as comments.&nbsp; After Sriram left,
+    the group generalized the idea to the notion of channels or streams of tokens where a
+    lexer might broadcast tokens on any number of channels.</font></small></p>
+    <p><small><font face="Arial">In 1999, after working with a number of colleagues, I finally
+    got around to introducing the notion of <em><a
+    href="http://www.antlr2.org/doc/streams.html">token streams</a></em>, which are reminiscent
+    of Java IO streams where chains of stream filters provide more and more highly processed
+    data streams.&nbsp; The JavaCC trick is implemented via a simple object that sits between
+    the parser and the lexer called TokenStreamHiddenTokenFilter.</font></small></p>
+    <p><small><font face="Arial">Streams can be filtered to produce many more interesting
+    results such as splitting off such things as comments, declarations, functions, whatever
+    into multiple streams.&nbsp; A lexer is a stream producer, a parser is a stream consumer,
+    and a stream filter is a stream producer and consumer.
+</body>
+</html>

@@ -1,0 +1,746 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>ANTLR Reference Manual</title>
+<meta name="keywords" content="language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate" />
+<meta name="description" content="ANTLR: ANother Tool for Language Recognition, (formerly PCCTS) is a language tool that provides a framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions." />
+<meta name="description" content="StringTemplate: a Java template engine used for any application generating text such as language translators and dynamic web sites; available in C# and Python as well." />
+
+</head>
+
+<body link="#336699" vlink="#6FA2D4" text="#000000">
+
+
+<!--
+Keywords: language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate
+
+Description: StringTemplate is a template engine used for any application generating text such as language translators and dynamic web sites.
+-->
+
+<!-- Terence Parr -->
+
+<!-- University of San Francisco -->
+
+<!-- parser generator -->
+
+<!-- tree parser -->
+
+<!-- tree walker -->
+
+<!-- java template engine -->
+
+<!-- python template engine -->
+
+<!-- C# template engine -->
+
+<!-- code generation -->
+
+<!-- language translation -->
+
+<!-- C++, C#, Java, Python, C -->
+
+<div align="center">
+<!-- BEGIN NAVIGATION -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="right">
+<font size="2" face="arial,helvetica"><strong><a href="http://www.antlr2.org/">Home</a></strong> |
+<strong><a href="http://www.antlr2.org/download.html">Download</a></strong> |
+ 
+<strong><a href="http://www.antlr.org/wiki">Wiki</a></strong> |
+<strong><a href="http://www.antlr2.org/about.html">About ANTLR</a></strong> |
+<strong><a href="http://www.antlr2.org/misc/feedback">Feedback</a></strong> |
+<strong><a href="http://www.antlr.org/support.html">Support</a></strong> |
+</font><br>
+<img src="http://www.antlr2.org/images/shim.gif" width="780" height="5" alt="" border="0"><br>
+</td>
+</tr>
+</table>
+<!-- END NAVIGATION -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- BEGIN BANNER -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" width="499">
+<a href="http://www.antlr2.org/"><img src="http://www.antlr2.org/images/logo-head-v2.gif" width="499" height="48" alt="" border="0"></a>
+</td>
+<td align="left" width="100%" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/logo-head.gif" width="1" height="1" alt="" border="0"></td>
+
+<td align="right" valign="top" width="150" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/shim.gif" width="150" height="8" alt="" border="0"><br>
+<font size="2" face="arial,helvetica"><strong>Latest version is <font color="#ffffff">2.7.7.</font><br>
+Download now! &raquo;</strong></font><br></td>
+
+
+<td align="right" valign="middle" width="128" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699">
+<a href="http://www.antlr2.org/download.html"><img src="http://www.antlr2.org/images/button-download.gif" width="122" height="29" alt="Download" align="right" border="0"></a></td>
+</tr>
+</table>
+<!-- END BANNER -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="1" alt="" border="0"></div>
+
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#ffffff" width="175" valign="top">
+<!-- left column -->
+
+<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="http://www.antlr2.org/">Home</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="http://www.antlr2.org/download.html">Download</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+    <table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="https://twitter.com/the_antlr_guy">News</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td colspan="2" bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font>Using ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/doc/index.html">Documentation</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/wiki">Wiki</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.jguru.com/faq/ANTLR">FAQ</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/article/list.html">Articles</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/grammar/list.html">Grammars</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/share/list.html">File Sharing</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/javadoc/overview-summary.html">Code API</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/support.html">Tech Support</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/jira/browse/ANTLR">Bug Tracking</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	</table>
+	
+	
+<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td colspan="2" bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font>About ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/about.html">What is ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/why.html">Why use ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/showcase/list.html">Showcase</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/testimonial/list.html">Testimonials</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/doc/getting-started.html">Getting Started</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/license.html">Software License</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/blog/index.html">ANTLR WebLogs</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/workshop/index.html">ANTLR Workshops</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.stringtemplate.org/">StringTemplate</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/TML/index.html">TML</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/pccts133.html">PCCTS</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/misc/feedback">Feedback</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/credits.html">Credits</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/misc/contact">Contact</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+<br>
+<br>
+<img src="http://www.antlr2.org/images/shim.gif" width="173" height="1" alt="" border="0">
+
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-butcc-donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+</form>
+</center>
+<font size="2" face="arial,helvetica">
+Support StringTemplate, ANTLR Project by making a donation!  Terence often pays for things like the antlr.org server, conference travel, and this site design (that alone cost US$1000). Buy him a beer and pizza remotely ;)
+</font>
+
+</td>
+<td bgcolor="#ffffff" width="100%" valign="top">
+<!-- main column -->
+
+<!-- BEGIN SEARCH -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<form METHOD=GET ACTION="http://www.google.com/search">
+<tr>
+	<td align="middle" valign="middle" bgcolor="#4679AC" width="88"><img src="http://www.antlr2.org/images/shim.gif" width="88" height="1" alt="" border="0"><br><img src="http://www.antlr2.org/images/search.gif" width="68" height="9" alt="Search" border="0"></td>
+	<td width="100%" valign="top" bgcolor="#4679AC"><img src="http://www.antlr2.org/images/shim.gif" width="1" height="3" alt="" border="0"><br><input type="text" name="query" size="30" style="width:100%; font-family:geneva,arial; background-color:#ffffff; color:#000000; font-size:10pt;"><br>
+	</td>
+	<td bgcolor="#4679AC" valign="middle" width="61">
+	<input type=hidden name=q value="site:antlr2.org">
+	</td>
+	</tr>
+</form>
+</table>
+<!-- END SEARCH -->
+
+<font face="arial,helvetica" size="2">
+<br><font size=4><strong>ANTLR Reference Manual</strong></font><br><br>
+
+<!-- BEGIN BODY -->
+
+<font face="Arial">
+<p align="center"><font size="7" face="Courier New"><strong>ANTLR<br>
+    Reference Manual<br>
+    </strong></font><br>
+    <big><big><big><font face="Arial">Credits</font></big></big></big></p>
+    <p align="center"><font face="Arial">Project Lead and Supreme Dictator<br>
+    <a href="mailto:parrt@jguru.com"><em>Terence Parr</em></a><br>
+University of San Franciso</font></p>
+    <p align="center"><font face="Arial">Support from<br>
+    <em><a href="http://www.jguru.com/">jGuru.com</a><br>
+    Your View of the Java Universe</em></font></p>
+    <p align="center"><font face="Arial">Help with initial coding<br>
+    <em>John Lilly, <a href="http://www.empathy.com/">Empathy Software</a> </em></font></p>
+    <p align="center">
+	 <font face="Arial">C++ code generator by<br>
+    <a href="mailto:pete@yamuna.demon.co.uk">
+	 <em>Peter Wells</em></a> and
+	 <a href="mailto:klaren@cs.utwente.nl">
+	 <em>Ric Klaren</em></a><br>
+	 </font>
+	 </p>
+	 <p align=center>C# code generation by<br>
+    Micheal Jordan, Kunle Odutola and Anthony Oguntimehin.
+    <!-- Python credits -->
+    <p align="center"><a
+    href="http://www.python.org/">Python's</a> universe has been
+    extended by<br>
+    <a href="mailto:ora.et.labora at web dot de"><em>Wolfgang H&auml;felinger</em></a> and
+    <a href="mailto:marq.kole at xs4all dot nl"><em>Marq Kole</em></a><br>
+    <p align="center"><font face="Arial">Infrastructure support from <a
+    href="http://www.perforce.com/">Perforce</a>:<br>
+    The world's best source code control system</font></p>
+    <p align="center"><font face="Arial">Substantial intellectual effort donated by<br>
+    <em>
+    <a href="mailto:Loring.Craymer@jpl.nasa.gov">Loring Craymer</a><br>
+    <a href="mailto:mzukowski@bco.com">Monty Zukowski </a><br>
+    <a href="mailto:jcoker@magelang.com">Jim Coker</a><br>
+    <a href="mailto:thetick@magelang.com">Scott Stanchfield</a><br>
+    <a href="mailto:johnm@magelang.com">John Mitchell</a><br>
+    <a href="mailto:flack@cs.purdue.edu">Chapman Flack</a> (UNICODE, streams)</em></font></p>
+    <p align="center">Source changes for Eclipse and NetBeans by<br>
+    <a href="mailto:marco@mvmsoft.de">Marco van Meegen</a> and <a href="mailto:brian-l-smith@uiowa.edu">Brian Smith</a></font></p>
+    <p align="center">&nbsp;</p>
+    <div align="left"><pre><font face="Arial"><i>ANTLR Version 2.7.5
+</i><font
+face="Arial" size="2"><em>January 28, 2005</em></font></pre>
+
+    <h2>What's ANTLR</h2>
+
+<p><font
+    face="Arial"><strong>ANTLR</strong>, ANother Tool for Language Recognition, (formerly <strong>PCCTS</strong>)
+    is a language tool that provides a framework for constructing recognizers, compilers, and
+    translators from grammatical descriptions containing Java, C++, or C# actions [You can use
+    PCCTS 1.xx to generate C-based parsers].</font></p>
+    <p><font face="Arial">Computer language translation has become a common task. While
+    compilers and tools for traditional computer languages (such as C or Java) are still being
+    built, their number is dwarfed by the thousands of mini-languages for which recognizers
+    and translators are being developed. Programmers construct translators for database
+    formats, graphical data files (e.g., PostScript, AutoCAD), text processing files (e.g.,
+    HTML, SGML).&nbsp; ANTLR is designed to handle all of your translation tasks.</p>
+
+    <p>
+    <a href="http://www.cs.usfca.edu/~parrt">Terence
+        Parr</a> has been working on ANTLR since 1989 and, together with his colleagues, has made
+        a number of fundamental <a href="http://www.antlr.org/contributions.html">contributions</a>
+         to parsing theory and language tool construction,
+        leading to the resurgence of LL(k)-based recognition tools.</font>
+
+    <p><font face="Arial">Here is a chronological <a href="http://www.antlr.org/history.html">history</a>
+    and credit list for ANTLR/PCCTS.</font></p>
+    <p><font face="Arial">See <a href="http://www.antlr.org/rights.html">ANTLR software rights</a>.</font>
+
+<p>Check out <a href="http://www.antlr.org/doc/getting-started.html"><b>Getting started</b></a> for a list of tutorials and get your questions answered at the <a
+    href="http://www.jguru.com/faq/ANTLR">ANTLR FAQ at jguru.com</a></font></p>
+    <p align="left"><font face="Arial">See also <a href="http://www.antlr.org/">http://www.ANTLR.org</a></font> and <a href="http://www.antlr2.org/doc/glossary.html"><b>glossary</b></a>.
+    <p><small><font face="Arial"><i>If you are looking for the previous main version (PCCTS
+    1.33) of ANTLR rather than the new Java-based version, see <a
+    href="http://www.antlr.org/pccts133.html">Getting started with PCCTS</a>.</i></font></small></p>
+    <hr>
+    <font face="Arial">
+    <p>Download <a href="http://www.antlr.org/download.html">ANTLR</a>.</p>
+
+    <p><a href="http://www.antlr.org/blog/CHANGES-2.7.5.txt"><big><big>ANTLR 2.7.5 release notes</big></big></a></p>
+    <p><big><a href="http://www.antlr2.org/doc/metalang.html#_bb1">ANTLR Meta-Language</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb2">Meta-Language Vocabulary </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb3">Header Section </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb4">Parser Class Definitions</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb5">Lexical Analyzer Class Definitions</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb6">Tree-parser Class Definitions</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb8">Options Section</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#TokensSection">Tokens Section</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb9">Grammar Inheritance </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb10">Rule Definitions</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb11">Atomic Production elements </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb12">Simple Production elements </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb13">Production Element Operators </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb14">Token Classes</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb15">Predicates </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb16">Element Labels</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb17">EBNF Rule Elements</a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb18">Interpretation Of Semantic Actions </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#SemanticPredicates">Semantic Predicates </a></li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#SyntacticPredicates">Syntactic Predicates </a><ul>
+          <li><a href="http://www.antlr2.org/doc/metalang.html#_bb21">Fixed depth lookahead and syntactic predicates</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/metalang.html#_bb22">ANTLR Meta-Language Grammar </a></li>
+    </ul>
+<!--index-->
+<p><big><a href="http://www.antlr2.org/doc/lexer.html#Lexical_Analysis_with_ANTLR">Lexical Analysis with ANTLR</a></big>
+<ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#lexicalrules">Lexical Rules</a></li>
+<ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Skipping_characters">Skipping characters</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Distinguishing_between_lexer_rules">Distinguishing between lexer rules</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Return_values">Return values</a></li>
+</ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Predicated-LL(k)_Lexing">Predicated-LL(k) Lexing</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Keywords_and_literals">Keywords and literals</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Common_prefixes">Common prefixes</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Token_definition_files">Token definition files</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Character_classes">Character classes</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Token_Attributes">Token Attributes</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#lexicallookahead">Lexical lookahead and the end-of-token symbol</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Scanning_Binary_Files">Scanning Binary Files</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#unicode">Scanning Unicode Characters</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Manipulating_Token_Text_and_Objects">Manipulating Token Text and Objects</a></li>
+<ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Manipulating_the_Text_of_a_Lexical_Rule">Manipulating the Text of a Lexical Rule</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Heterogeneous_Token_Object_Streams">Heterogeneous Token Object Streams</a></li>
+</ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Filtering%20Input%20Streams">Filtering Input Streams</a></li>
+<ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#ANTLR_Masquerading_as_SED">ANTLR Masquerading as SED</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Nongreedy_Subrules">Nongreedy Subrules</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Greedy_Subrules">Greedy Subrules</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Nongreedy_Lexer_Subrules">Nongreedy Lexer Subrules</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Limitations_of_Nongreedy_Subrules">Limitations of Nongreedy Subrules</a></li>
+</ul>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Lexical_States">Lexical States</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#The_End_Of_File_Condition">The End Of File Condition</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#Case_sensitivity">Case sensitivity</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#ignoringwhitespace">Ignoring whitespace in the lexer</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#trackingline">Tracking Line Information</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#trackingcolumn">Tracking Column Information</a></li>
+<li><a href="http://www.antlr2.org/doc/lexer.html#dfacompare">But...We've Always Used Automata For Lexical Analysis!</a></li>
+</ul>
+<!--/index-->
+
+    <p><big><a href="http://www.antlr2.org/doc/sor.html#_bb1">ANTLR Tree Parsers</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/sor.html#_bb2">What's a tree parser?</a></li>
+      <li><a href="http://www.antlr2.org/doc/sor.html#_bb3">What kinds of trees can be parsed?</a></li>
+      <li><a href="http://www.antlr2.org/doc/sor.html#_bb4">Tree grammar rules</a> <ul>
+          <li><a href="http://www.antlr2.org/doc/sor.html#_bb5">Syntactic predicates</a></li>
+          <li><a href="http://www.antlr2.org/doc/sor.html#_bb6">Semantic predicates</a></li>
+          <li><a href="http://www.antlr2.org/doc/sor.html#_bb7">An Example Tree Walker</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/sor.html#_bb8">Transformations </a></li>
+      <ul>
+        <li><a href="http://www.antlr2.org/doc/sor.html#_bb9">An Example Tree Transformation</a></li>
+      </ul>
+      <li><a href="http://www.antlr2.org/doc/sor.html#Examining_Debugging ASTs">Examining/Debugging ASTs</a></li>
+    </ul>
+    <p><a href="http://www.antlr2.org/doc/streams.html"><big>Token Streams</big></a><ul>
+      <li><a href="http://www.antlr2.org/doc/streams.html#Introduction">Introduction</a></li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#Pass-Through Token Stream">Pass-Through Token Stream</a></li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#Token Stream Filtering">Token Stream Filtering</a></li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#Token Stream Splitting">Token Stream Splitting</a><ul>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Example">Example</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Filter Implementation">Filter Implementation</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#How To Use This Filter">How To Use This Filter</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Tree Construction">Tree Construction</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Garbage Collection Issues">Garbage Collection Issues</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Notes">Notes</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#lexerstates">Token Stream Multiplexing (aka &quot;Lexer
+        states&quot;)</a><ul>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Multiple Lexers">Multiple Lexers</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Lexers Sharing Same Character Stream">Lexers Sharing Same
+            Character Stream</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Parsing Multiplexed Token Streams">Parsing Multiplexed Token
+            Streams</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#The Effect of Lookahead Upon Multiplexed Token Streams">The Effect
+            of Lookahead Upon Multiplexed Token Streams</a></li>
+          <li><a href="http://www.antlr2.org/doc/streams.html#Multiple Lexers Versus Calling Another Lexer Rule">Multiple Lexers
+            Versus Calling Another Lexer Rule</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#rewriteengine">TokenStreamRewriteEngine Easy Syntax-Directed Translation</a></li>
+      <li><a href="http://www.antlr2.org/doc/streams.html#The Future">The Future</a></li>
+    </ul>
+    <p><a href="http://www.antlr2.org/doc/vocab.html"><big>Token Vocabularies</big></a><ul>
+      <li><a href="http://www.antlr2.org/doc/vocab.html#Introduction">Introduction</a><ul>
+          <li><a href="http://www.antlr2.org/doc/vocab.html#How does ANTLR decide which vocabulary symbol gets what token type?">How
+            does ANTLR decide which vocabulary symbol gets what token type?</a></li>
+          <li><a href="http://www.antlr2.org/doc/vocab.html#Why do token types start at 4?">Why do token types start at 4?</a></li>
+          <li><a href="http://www.antlr2.org/doc/vocab.html#What files associated with vocabulary does ANTLR generate?">What
+            files associated with vocabulary does ANTLR generate?</a></li>
+          <li><a
+            href="http://www.antlr2.org/doc/vocab.html#How does ANTLR synchronize the symbol-type mappings between grammars in the same file and in different files?">How
+            does ANTLR synchronize the symbol-type mappings between grammars in the same file and in
+            different files?</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/vocab.html#Grammar Inheritance and Vocabularies">Grammar Inheritance and
+        Vocabularies</a></li>
+      <li><a href="http://www.antlr2.org/doc/vocab.html#Recognizer Generation Order">Recognizer Generation Order</a></li>
+      <li><a href="http://www.antlr2.org/doc/vocab.html#Tricky Vocabulary Stuff">Tricky Vocabulary Stuff</a></li>
+    </ul>
+    <p><big><a href="http://www.antlr2.org/doc/err.html#_bb1">Error Handling and Recovery</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/err.html#ANTLR Exception Hierarchy">ANTLR Exception Hierarchy</a></li>
+      <li><a href="http://www.antlr2.org/doc/err.html#_bb2">Modifying Default Error Messages With Paraphrases</a></li>
+      <li><a href="http://www.antlr2.org/doc/err.html#ParserExceptionHandling">Parser Exception Handling</a></li>
+      <li><a href="http://www.antlr2.org/doc/err.html#SpecifyingParserException-Handlers">Specifying Parser Exception-Handlers</a></li>
+      <li><a href="http://www.antlr2.org/doc/err.html#Default Exception Handling in the Lexer">Default Exception Handling in
+        the Lexer</a></li>
+    </ul>
+    <p><big><a href="http://www.antlr2.org/doc/runtime.html#_bb1">Java Runtime Model</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#_bb2">Programmer's Interface</a></li>
+      <ul>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb3">What ANTLR generates</a></li>
+      </ul>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#sharingstate">Multiple Lexers/Parsers With Shared Input State</a></li>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#_bb4">Parser Implementation</a></li>
+      <ul>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb5">Parser Class</a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb6">Parser Methods</a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb7">EBNF Subrules</a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb8">Production Prediction </a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb9">Production Element Recognition </a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb10">Standard Classes</a></li>
+      </ul>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#_bb11">Lexer Implementation</a></li>
+      <ul>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb12">Lexer Form</a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb13">Creating Your Own Lexer</a></li>
+        <li><a href="http://www.antlr2.org/doc/runtime.html#_bb14">Lexical Rules </a></li>
+      </ul>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#_bb15">Token Objects</a></li>
+      <li><a href="http://www.antlr2.org/doc/runtime.html#_bb16">Token Lookahead Buffer</a></li>
+    </ul>
+    <p><big><a href="http://www.antlr2.org/doc/cpp-runtime.html#_bb1">C++ Runtime model</a></big><ul>
+       <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_buildruntime">Building the runtime</a></li>
+        <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_generatingcpp">Getting C++ output</a></li>
+        <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_changingasttype">Changing the AST Type</a></li>
+        <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_heteroast">Using Heterogeneous AST types</a></li>
+		  <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_extras">Extra functionality in C++ mode</a></li>
+        <li><a href="http://www.antlr2.org/doc/cpp-runtime.html#_template">A grammar template</a></li>
+    </ul>
+    <p>
+    <p><big><a href="http://www.antlr2.org/doc/csharp-runtime.html">C# Runtime model</a></big>
+	<ul>
+<li><a href=http://www.antlr2.org/doc/csharp-runtime.html#t1>Building the ANTLR C# Runtime</a></li>
+<li><a href=http://www.antlr2.org/doc/csharp-runtime.html#t2>Specifying Code Generation</a></li>
+<li><a href=http://www.antlr2.org/doc/csharp-runtime.html#t3>C#-Specific ANTLR Options</a></li>
+<li><a href=http://www.antlr2.org/doc/csharp-runtime.html#t4>A Template C# ANTLR Grammar File</a></li>
+
+	</ul>
+  
+       <!-- Hail Python! -->
+       <p><big><a href="http://www.antlr2.org/doc/python-runtime.html">Python Runtime model</a></big>
+       <ul>
+       <li><a href="http://www.antlr2.org/doc/python-runtime.html#t1">Building the ANTLR Python Runtime</a></li>
+       <li><a href="http://www.antlr2.org/doc/python-runtime.html#t2">Specifying Code Generation</a></li>
+       <li><a href="http://www.antlr2.org/doc/python-runtime.html#t3">Python-Specific ANTLR Options</a></li>
+       <li><a href="http://www.antlr2.org/doc/python-runtime.html#t4">A Template Python ANTLR Grammar File</a></li>
+       </ul>
+
+
+    <p><big><a href="http://www.antlr2.org/doc/trees.html#_bb1">ANTLR Tree Construction</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb2">Notation</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb3">Controlling AST construction</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb4">Grammar annotations for building ASTs</a></li>
+      <ul>
+        <li><a href="http://www.antlr2.org/doc/trees.html#_bb5">Leaf nodes</a></li>
+        <li><a href="http://www.antlr2.org/doc/trees.html#_bb6">Root nodes</a></li>
+        <li><a href="http://www.antlr2.org/doc/trees.html#_bb7">Turning off standard tree construction</a></li>
+        <li><a href="http://www.antlr2.org/doc/trees.html#_bb8">Tree node construction</a></li>
+        <li><a href="http://www.antlr2.org/doc/trees.html#_bb9">AST Action Translation</a></li>
+      </ul>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb10">Invoking parsers that build trees</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb11">AST Factories</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#Heterogeneous ASTs">Heterogeneous ASTs</a><ul>
+          <li><a href="http://www.antlr2.org/doc/trees.html#An Expression Tree Example"><font size="3">An Expression Tree
+            Example</font></a></li>
+          <li><a href="http://www.antlr2.org/doc/trees.html#Describing Heterogeneous Trees With Grammars">Describing
+            Heterogeneous Trees With Grammars</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#AST Serialization">AST (XML) Serialization</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb12">AST enumerations</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb13">A few examples</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb14">Labeled subrules</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb15">Reference nodes</a></li>
+      <li><a href="http://www.antlr2.org/doc/trees.html#_bb16">Required AST functionality and form</a></li>
+    </ul>
+    <p><big><a href="http://www.antlr2.org/doc/inheritance.html#_bb1">Grammar Inheritance</a></big><ul>
+      <li><a href="http://www.antlr2.org/doc/inheritance.html#_bb2">Introduction and motivation</a></li>
+      <li><a href="http://www.antlr2.org/doc/inheritance.html#_bb3">Functionality</a></li>
+      <li><a href="http://www.antlr2.org/doc/inheritance.html#_bb4">Where Are Those Supergrammars?</a></li>
+      <li><a href="http://www.antlr2.org/doc/inheritance.html#_bb7">Error Messages</a></li>
+    </ul>
+    <p><a href="http://www.antlr2.org/doc/options.html#Options"><big>Options</big></a><ul>
+      <li><a href="http://www.antlr2.org/doc/options.html#File, Grammar, and Rule">File, Grammar, and Rule Options </a><ul>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb2">Options supported in ANTLR</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb3">language: Setting the generated language</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb4">k: Setting the lookahead depth </a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#importVocab">importVocab: Initial Grammar Vocabulary</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#exportVocab">exportVocab: Naming Output Vocabulary</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb8">testLiterals: Generate literal-testing code</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb9">defaultErrorHandler: Controlling default exception-handling</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb10">codeGenMakeSwitchThreshold: controlling code generation</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb11">codeGenBitsetTestThreshold: controlling code generation</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb12">buildAST: Automatic AST construction </a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb13">ASTLabelType: Setting label type</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb14">charVocabulary: Setting the lexer character vocabulary</a></li>
+          <li><a href="http://www.antlr2.org/doc/options.html#_bb15">warnWhenFollowAmbig</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.antlr2.org/doc/options.html#Command Line Options">Command Line Options</a></li>
+    </ul>
+	</div> 
+
+<!-- END BODY -->
+
+</font>
+
+</td>
+</tr>
+</table>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+</body>
+
+</html>
+
+
+
+
+<!--
+     FILE ARCHIVED ON 14:02:12 Jul 18, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:03:21 Nov 24, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

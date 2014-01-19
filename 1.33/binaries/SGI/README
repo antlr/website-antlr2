@@ -1,0 +1,9 @@
+VERSION: PCCTS 1.23
+
+SGI IRIX 5.2 files.  You should be able to run these under any IRIX 5.x
+version of the OS.
+
+I don't guarantee anything except that these work on my machine ;)
+
+Terence Parr
+parrt@acm.org

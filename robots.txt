@@ -1,0 +1,10 @@
+#
+# ANTLR.org's robots.txt file that prevents spiders from
+# walking over all sorts of unnecessary stuff.
+#
+User-agent: *
+#
+Disallow: /misc/contact
+Disallow: /download
+Disallow: /audio
+Disallow: /images

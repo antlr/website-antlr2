@@ -1,0 +1,77 @@
+#### Test of TML markup
+
+Start with this @http://www.antlr.org@ duh.
+
+You have _reached_ a TWikiSite (pronounced twee-kee site). TWiki is a
+meeting {place} where people collaborate on common interests. Anyone can
+contribute using a regular Web browser. TWiki looks like a normal Web
+site, but it allows.
+
+Another paragraph You have reached a ne can contribute using a regular
+Web browser. TWiki looks like a normal Web site, but it allows.
+
+Now here is a table
+
+[
+*Name* | *Email*
+-----
+Terence Parr | parrt\@jguru.com
+-----
+Tom Burns | tombu\@jguru.com
+-----
+Mel Berman | mel\@jguru.com and this
+Another paragraph You have reached a ne can contribute using a regular
+Web browser. TWiki looks like a normal Web site, but it allows.
+]
+
+and some lists
+
+o list item one
+\
+plus new para within bullet.\
+newline in para\
+graph.
+
+o list item two
+  that wraps and stuff
+
+  1 nested item one
+
+  1 nested
+item two
+
+o back
+
+must finish with a paragraph or end of file.
+
+<<
+public void foo() {
+	int x;
+	x >= 3;
+}
+>>
+
+### Test of *TML* markup
+
+  "Block quote man
+is this big and cool or what?"
+
+Paraggrfdsafdafds and this has a linke @http://www.antlr.org@ and a titled one
+@http://www.antlr.org ANTLR HOME Web Site@ which is neato, man.
+
+
+some final paragraph.
+
+### Test the plugin stuff
+
+Here is where we test plugins (path=%plugins)
+
+%def(author, "Terence Parr")
+%def(version, 1.2)
+
+Now ref %date() and then %date(yesterday)
+
+%include(~parrt/code/T.java)
+%include(%author)
+
+now that is cool.  Include plugin knows that .java is <<...>> block?

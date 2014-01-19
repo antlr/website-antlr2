@@ -1,0 +1,26 @@
+
+                               WHAT YOU NEED
+
+BASIC SYSTEM (software only)
+
+     If you have a UNIX system, you only need:
+
+     sor.tar or sor.tar.gz
+
+     If you do not have UNIX (i.e., 'tar' program) you should:
+
+     write email to parrt@acm.org requesting a new format
+
+DOCUMENTATION
+
+     overview.ps    -- Paper describing the basic overview of SORCERER
+                       Poster paper at Int'l Conference Compiler
+                       Construction 1994; Scotland.
+
+     reference.ps   -- See the book in pub/pccts/Book.
+
+FILE FORMATS
+     *.ps           -- PostScript
+     *.tar          -- UNIX 'tar'
+     *.Z            -- UNIX 'compress'
+     *.gz           -- gzip'd

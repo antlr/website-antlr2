@@ -1,0 +1,83 @@
+To the ftp site manager - sorry, but I'm a bit ignorant of the correct
+procedures for submitting things at your site.  Hope this is sufficient
+information.
+
+The thing I've uploaded is a metric tool based on Terence Parr's PCCTS.
+The right file is cccc.tgz.2 (cccc.tgz was an abortive attempt which
+I made without switching out of ASCII mode, and of course I can't 
+overwrite it).  The file is a gzip'ed tar file (made on Linux with GNU tar).
+below is a draft of the email I sent to Terence Parr about the file.  Please 
+get in touch with me if you need more info, or if you wish to reject the file
+(can't think why you would, but it's your site...)
+
+thanks for your help
+
+
+Tim Littlefair
+
+t.littlefair@cowan.edu.au
+tim@mitswa.com.au
+83 The Strand
+Bedford  WA 6052
+Western Australia
+
+---------
+
+
+Terence
+
+Just a quick note to thank you for PCCTS (which I've been lurking away
+working on for most of this year), and to describe some of the product which
+I've uploaded to ftp.parr-research.com for your consideration.
+
+The stuff is in the file cccc.tgz and purports to be a metric analyser for
+C++ code.  It implements a very coarse parser, which is designed (??) to
+break an input file up into regions, each of which contains a single C++ 
+class, method or instance variable definitions or declaration.  The program
+counts lines of code, lines of comment, and McCabe's cyclomatic number for
+each region it encounters (the counting rules are lexically based, and are 
+pragmatic rather than exact). I don't think it's the greatest thing since
+sliced bread, but the grammar may be of some interest to people with similar
+coarse parsing requirements (reverse engineering applications spring to
+mind), as it is smaller and probably more easy to understand than a full
+grammar for the language needs to be, and it is designed (there's that word
+again, but I only remember coding) to run on code which has not been
+preprocessed, so it will recognize a method definition as such from the
+pattern A::B without needing to have previously been shown a definition of A
+as a class.
+
+I have implemented the analyser as part of my M.Sc. thesis project, and
+propose to release it for free general use on the internet in the near future
+(i.e. after my supervisor has had a week or so to review the document
+'project.txt' in the distribution, which is the written documentation we are
+using to launch the first phase of the project).  My intentions in making
+the tool available are not purely altruistic - I hope to be able to recruit 
+subject sites for the later phases of my research from users of the package.
+
+I am uploading it to you in advance to ask your advice on the most appropriate
+site to list in the documentation as the primary source.  All my development
+has been on Linux, and I certainly plan uploading a set of the final
+distribution to sunsite.unc.edu.  I have got a copy of the latest LSM (Linux
+System Map - i.e. catalogue of known software for Linux), and there does not
+appear to be a binary package of PCCTS for Linux available, although I found 
+that most versions, including v1.33 have compiled out of the box for me 
+(albeit with occasional warnings).  I would also like to put the product in 
+the contrib directory at the PCCTS site (if you are agreeable).  
+
+Anyway, my questions are:
+
+Which site would you prefer me to list as the primary site (i.e. sunsite or
+ftp.parr-research.com)?  
+Would you like me to undertake a binary and source distribution of PCCTS for 
+Linux to upload to sunsite?  
+And last but not least, if time permits (as I don't expect it will) do you 
+have any suggestions for improvement of the grammar or the supporting code,
+either for the current version (which is by way of being a prototype), or 
+for the future version which I propose to start work on when the first phase 
+of my project is completed?
+
+Regards and thanks again for PCCTS
+
+
+Tim Littlefair
+

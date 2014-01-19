@@ -1,0 +1,38 @@
+2 March 1997
+
+This directory contains information, examples, etc... from users of PCCTS.
+Please contact the contributors with problems not the authors of PCCTS.
+
+I have added a very decent ANSI C front end (only problem that I know of is
+that it doesn't handle K&R style function headers; ack...just found
+a few others, but I'll fix 'em).  See ansi.tar.
+
+The C++ grammar has been significantly enhanced. version is now 1.1
+(original was 1.0).  It now compiles correctly with 1.32b7 and uses
+token object garbage collection.  The "real" C++ grammar is
+done now by John Lilley.  See http://www.empathy.com/pccts/
+
+The java.g grammar is 1.0.2 and hacks threw all the 1.0.2 source code.
+
+The Browser32.zip contains win32 pccts, java parser, and browser that
+integrates with the parser.
+
+Terence Parr
+MageLang Institute
+-----------
+Files:
+
+  7274 Dec 12 14:35 NOTES.flex       How to use flex with ANTLR
+514930 Mar 12 15:15 Browserw32.zip   A Java source browser + PCCTS for win32
+                                     Includes java.g below.
+ 18031 Mar 12 15:15 java.g           Java 1.0.2 language grammar.
+  4703 Mar 27 11:33 ObjC.g           Totally stripped down Objective-C grammar
+131072 Jan 10 18:54 ansi.tar         ANSI C grammar
+245760 Sep 24 20:28 cplusplus.tar    C++ grammar 1.1
+ 49106 Sep 25 00:58 cplusplus.tar.gz C++ grammar 1.1 (gzip'd)
+163840 Jun 13 16:33 f77.tar          f77 grammar (Borland OS/2)
+ 31969 Jun 13 16:26 f77.tar.gz       f77 grammar (Borland OS/2) (gzip'd)
+  4964 Oct  5 14:18 mktempl          Somebody's makefile template
+  1577 Nov 12 12:55 modestack.cpp    Lex class push/pop routines
+155648 Sep 30 16:11 ltree.tar        A lisp-tree to PS generator
+ 32581 Sep 30 16:15 ltree.tar.gz	 gzip'd version

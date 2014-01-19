@@ -1,0 +1,7 @@
+Okay, these are the binaries for antlr, dlg, genmk and sor for Ultrix 4.3.
+These binaries were built on a DECstation 5000/200 using gcc-2.5.8.  The
+command line I used was `make CC=gcc'.  *Use at own risk* and don't forget 
+to thank Terence Parr for the wonderful toolkit he has contributed in the 
+public domain.
+
+giorgos adamopoulos (gadamop@cc.ece.ntua.gr)

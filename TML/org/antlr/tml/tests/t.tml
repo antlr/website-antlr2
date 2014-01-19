@@ -1,0 +1,41 @@
+     Testing Lout Output
+
+I'm testing some stuff here.
+
+This is a date: %date
+
+Heh, this should be an ol:
+
+1 first item
+  o nested list item one
+  o nested list item two
+1 second item at outer level
+
+a normal paragraph terminates
+
+#### Outer most big section
+
+It can do paragraphs
+
+and mroe paras {t=1;} and *bold* me _baby_
+
+Is this a centered ting?
+
+  "THis should
+be centered"
+
+back to normal paragraph
+
+### nest header
+
+stuff
+
+### same level
+
+## Level 3
+
+para
+
+#### Back out to main level header
+
+stuff

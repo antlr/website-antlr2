@@ -1,0 +1,646 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Terence's Markup Language</title>
+<meta name="keywords" content="language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate" />
+<meta name="description" content="ANTLR: ANother Tool for Language Recognition, (formerly PCCTS) is a language tool that provides a framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions." />
+<meta name="description" content="StringTemplate: a Java template engine used for any application generating text such as language translators and dynamic web sites; available in C# and Python as well." />
+
+</head>
+
+<body link="#336699" vlink="#6FA2D4" text="#000000">
+
+
+<!--
+Keywords: language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate
+
+Description: StringTemplate is a template engine used for any application generating text such as language translators and dynamic web sites.
+-->
+
+<!-- Terence Parr -->
+
+<!-- University of San Francisco -->
+
+<!-- parser generator -->
+
+<!-- tree parser -->
+
+<!-- tree walker -->
+
+<!-- java template engine -->
+
+<!-- python template engine -->
+
+<!-- C# template engine -->
+
+<!-- code generation -->
+
+<!-- language translation -->
+
+<!-- C++, C#, Java, Python, C -->
+
+<div align="center">
+<!-- BEGIN NAVIGATION -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="right">
+<font size="2" face="arial,helvetica"><strong><a href="http://www.antlr2.org/">Home</a></strong> |
+<strong><a href="http://www.antlr2.org/download.html">Download</a></strong> |
+ 
+<strong><a href="http://www.antlr.org/wiki">Wiki</a></strong> |
+<strong><a href="http://www.antlr2.org/about.html">About ANTLR</a></strong> |
+<strong><a href="http://www.antlr2.org/misc/feedback">Feedback</a></strong> |
+<strong><a href="http://www.antlr.org/support.html">Support</a></strong> |
+</font><br>
+<img src="http://www.antlr2.org/images/shim.gif" width="780" height="5" alt="" border="0"><br>
+</td>
+</tr>
+</table>
+<!-- END NAVIGATION -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- BEGIN BANNER -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" width="499">
+<a href="http://www.antlr2.org/"><img src="http://www.antlr2.org/images/logo-head-v2.gif" width="499" height="48" alt="" border="0"></a>
+</td>
+<td align="left" width="100%" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/logo-head.gif" width="1" height="1" alt="" border="0"></td>
+
+<td align="right" valign="top" width="150" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/shim.gif" width="150" height="8" alt="" border="0"><br>
+<font size="2" face="arial,helvetica"><strong>Latest version is <font color="#ffffff">2.7.7.</font><br>
+Download now! &raquo;</strong></font><br></td>
+
+
+<td align="right" valign="middle" width="128" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699">
+<a href="http://www.antlr2.org/download.html"><img src="http://www.antlr2.org/images/button-download.gif" width="122" height="29" alt="Download" align="right" border="0"></a></td>
+</tr>
+</table>
+<!-- END BANNER -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="1" alt="" border="0"></div>
+
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#ffffff" width="175" valign="top">
+<!-- left column -->
+
+<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="http://www.antlr2.org/">Home</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="http://www.antlr2.org/download.html">Download</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+    <table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font> <a href="https://twitter.com/the_antlr_guy">News</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td colspan="2" bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font>Using ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/doc/index.html">Documentation</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/wiki">Wiki</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.jguru.com/faq/ANTLR">FAQ</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/article/list.html">Articles</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/grammar/list.html">Grammars</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/share/list.html">File Sharing</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/javadoc/overview-summary.html">Code API</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/support.html">Tech Support</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/jira/browse/ANTLR">Bug Tracking</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	</table>
+	
+	
+<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td colspan="2" bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font>About ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/about.html">What is ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/why.html">Why use ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/showcase/list.html">Showcase</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr.org/testimonial/list.html">Testimonials</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/doc/getting-started.html">Getting Started</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/license.html">Software License</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/blog/index.html">ANTLR WebLogs</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">&raquo;</font> <a href="http://www.antlr2.org/workshop/index.html">ANTLR Workshops</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.stringtemplate.org/">StringTemplate</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/TML/index.html">TML</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/pccts133.html">PCCTS</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/misc/feedback">Feedback</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/credits.html">Credits</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="3" cellspacing="1" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#CBFF7D">&raquo;</font><a href="http://www.antlr2.org/misc/contact">Contact</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</table>
+
+<br>
+<br>
+<img src="http://www.antlr2.org/images/shim.gif" width="173" height="1" alt="" border="0">
+
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-butcc-donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+</form>
+</center>
+<font size="2" face="arial,helvetica">
+Support StringTemplate, ANTLR Project by making a donation!  Terence often pays for things like the antlr.org server, conference travel, and this site design (that alone cost US$1000). Buy him a beer and pizza remotely ;)
+</font>
+
+</td>
+<td bgcolor="#ffffff" width="100%" valign="top">
+<!-- main column -->
+
+<!-- BEGIN SEARCH -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<form METHOD=GET ACTION="http://www.google.com/search">
+<tr>
+	<td align="middle" valign="middle" bgcolor="#4679AC" width="88"><img src="http://www.antlr2.org/images/shim.gif" width="88" height="1" alt="" border="0"><br><img src="http://www.antlr2.org/images/search.gif" width="68" height="9" alt="Search" border="0"></td>
+	<td width="100%" valign="top" bgcolor="#4679AC"><img src="http://www.antlr2.org/images/shim.gif" width="1" height="3" alt="" border="0"><br><input type="text" name="query" size="30" style="width:100%; font-family:geneva,arial; background-color:#ffffff; color:#000000; font-size:10pt;"><br>
+	</td>
+	<td bgcolor="#4679AC" valign="middle" width="61">
+	<input type=hidden name=q value="site:antlr2.org">
+	</td>
+	</tr>
+</form>
+</table>
+<!-- END SEARCH -->
+
+<font face="arial,helvetica" size="2">
+<br><font size=4><strong>Terence's Markup Language</strong></font><br><br>
+
+<!-- BEGIN BODY -->
+<HTML>
+<HEAD>
+<body bgcolor=#FFFFFF text=#000000>
+
+<em>Version 0.1</em>, March 24, 2004
+
+<P>Terence Parr <BR>
+University of San Francisco & jGuru
+
+<P> [<em>This doc is inadequate at best, but with the source and some samples, you
+can figure it out</em>. ;)]
+<H2>Useful links</H2>
+
+<H3>Source, Doc</H3>
+
+<UL>
+<LI><A HREF="http://www.antlr2.org/download/tml-0.1.tar.gz"><B> download source, jar</B></A>
+</LI>
+<LI><A HREF="http://www.antlr2.org/TML/index.html"><B> documentation/main page</B></A>
+</LI>
+<LI><A HREF="http://www.antlr2.org/TML/org/antlr/tml"><B> browse source</B></A>
+</LI>
+
+</UL>
+<H3>Examples</H3>
+
+
+<P>I do all of my course materials in TML; it's just fabulous for generating HTML, though I've given up using TML for anything but HTML.  I use LaTeX for papers.  Anyway, any <TT>*.tml</TT> file in these directories should give the idea.
+<UL>
+<LI><A HREF="http://www.cs.usfca.edu/~parrt/course/652/lectures"><B>http://www.cs.usfca.edu/~parrt/course/652/lectures</B></A>
+</LI>
+<LI><A HREF="http://www.cs.usfca.edu/~parrt/course/601/lectures"><B>http://www.cs.usfca.edu/~parrt/course/601/lectures</B></A>
+</LI>
+
+</UL>
+<H2>Introduction and Motivation</H2>
+
+
+<P>Humans brains gravitate towards WYSIWYG editors because the formatted text is just the text with a visual layout and possibly some font twiddling like bold and italics.  In constrast, reading the computer representation of this (HTML, RTF&lt;shudder&gt;, PostScript) can be difficult.  Your brain has to filter out the formatting instructions to get at the text.
+
+<P>The problems with WYSIWYG editors in my view are:
+<OL>
+<LI>They are very heavyweight (compared to a text editor)
+</LI>
+<LI>You are usually providing lots of formatting and layout instructions rather than "this is a title".  You end up spending a <B>lot</B> of time just laying out your text, which may not even make it into the book.
+</LI>
+<LI>While some WYSIWYG editors like Word provide styles so that you can say "this is a title", I found the layout interaction between styles cumbersome.  It is often difficult to get things to look right.  I also like to do search, replace operations on non word items like "find the next section".  Many editors won't allow this.
+</LI>
+<LI>Getting your document correctly converted into a different format like HTML, PDF, raw text, or whatever can be difficult with commercial products as they don't want to let you "escape."  You can get tied to a particular OS even.
+</LI>
+<LI>From my perusal of publishers' websites, they all say the same thing: don't format your text with anything beyond section markers and typewriter font changes.  No footnotes, no fancy tables etc...  I.e., they are going to ignore all your formatting anyway when you turn in the book.  They all will accept straight text.
+</LI>
+<LI>I like to think of my documents as "programs".  Being able to add a "plugin" that does something interesting with a text argument is cool and really useful.
+</LI>
+
+</OL>
+
+<P>The alternative of choice for technical folks is to use a text-based formatting system like LaTeX or nroff or even HTML.  Again, though, you are providing formatting information not high-level document components.  DOCBOOK on the other hand has the high-level nature you want, but it adds so much markup that I find it very hard to read the text I'm writing.
+
+<P>My solution to this problem is take the best of WYSIWYG and text-based systems and merge them into a system that covers 90% of my document needs.  This system, TML (<em>Terence's Markup Language</em>), is a Wiki-inspired document language that I've used successful to produce course materials, web pages, and slides.
+
+<P>Consider writing a piece of email.  You specify your formatting visually with newlines and simple markup like *bold this* and so on.  The idea in TML is to use the visual information as markup for paragraphs and sections rather than explicit tags.  This allows you to read your document naturally in a text editor.  A translator on the back end can generate Lout, DOCBOOK, HTML, or whatever you want.
+
+<P>This document describes the basic syntax of TML and, because it is written in itself, this document provides a simple example.
+
+<P>
+<H2>Syntax</H2>
+
+
+<P>The first line of any document is the title.  Sections are denoted with multiple # characters where <TT>####</TT> indicates the outermost section.  In other words, the bigger the visual display the more major the section.  All paragraphs start with a blank line.  Here is a simple TML document:
+
+<FONT SIZE=2><PRE>
+A sample TML document
+
+This is the first paragraph.
+
+#### Outermost section
+
+Here is the first paragraph of the outermost section
+
+Here is the second paragraph of the outermost section
+
+### A nested section
+
+Here is the first paragraph of the nested section
+</PRE></FONT>
+
+
+
+<P>Bullet lists are just like you do in email text:
+
+<FONT SIZE=2><PRE>
+o first bullet
+o second bullet
+</PRE></FONT>
+
+
+
+<P>To make numbered lists use
+
+<FONT SIZE=2><PRE>
+1 first numbered item
+1 second numbered item
+</PRE></FONT>
+
+
+
+<P>For formatting words, you can use the following
+
+<TABLE cellspacing=0 border=1>
+<TR><TD>
+<B>Operator</B> </TD><TD> <B>Meaning</B>
+</TD>
+</TR>
+<TR>
+<TD>
+{x} </TD><TD> Teletype font
+</TD>
+</TR>
+<TR>
+<TD>
+*x* </TD><TD> Bold font
+</TD>
+</TR>
+<TR>
+<TD>
+_x_ </TD><TD> Italics font
+</TD>
+</TR>
+<TR>
+<TD>
+\x </TD><TD> Escape char x
+</TD>
+</TR>
+<TR>
+<TD>
+\ end of line </TD><TD> &lt;br&gt;; line break
+</TD>
+</TR>
+<TR>
+<TD>
+\ line by itself </TD><TD> &lt;br&gt;&lt;br&gt; blank line
+</TD>
+</TR>
+<TR>
+<TD>
+  "x" </TD><TD> block quote ('"' preceded by two spaces)
+</TD></TR>
+</TABLE>
+
+
+<P>Tables are done sort of visually:
+
+<FONT SIZE=2><PRE>
+[
+*header col 1* | *header col 2*
+----
+row 1 col 1 | col 2
+----
+row 2 col 1 | col 2
+...
+]
+</PRE></FONT>
+
+
+
+<P><B>Links</B>.  Use style <TT>@(http://www.antlr.org)</TT> and <TT>@(http://www.antlr.org, ANTLR)</TT>.
+
+<P><B>Plugins</B>.  <TT>%foo(...)</TT> invokes <TT>org.tml.plugin.foo.translate(...)</TT>, sending
+the result to the output file.
+
+<P>Use
+
+<FONT SIZE=2><PRE>
+%include("file")
+</PRE></FONT>
+
+
+
+<P>to include a file or 
+
+<FONT SIZE=2><PRE>
+%include("file", code)
+</PRE></FONT>
+
+
+
+<P>to have it appear in <TT>&lt;pre&gt;</TT> tags.
+
+<P>Use
+
+<FONT SIZE=2><PRE>
+%output &lt;&lt;
+send this to the output
+&gt;&gt;
+</PRE></FONT>
+
+
+
+<P>to send something straight to output.
+
+<P>Can put a box around something:
+
+<FONT SIZE=2><PRE>
+%box &lt;&lt;
+put this in a box
+&gt;&gt;
+</PRE></FONT>
+
+
+<H2>Running TML</H2>
+
+
+<P>To run TML on your TML files, just run stdin to <TT>org.antlr.tml.Tool</TT>.  Here is the shell script I use to run tml via <TT>$ tml foo</TT> (takes <TT>foo.tml</TT> and makes <TT>foo.html</TT>):
+
+<FONT SIZE=2><PRE>
+#!/bin/bash
+java org.antlr.tml.Tool &lt; $1.tml &gt;$1.html
+</PRE></FONT>
+
+
+
+<P>Note that you must have <A HREF="http://www.antlr.org/download.html"><B> ANTLR</B></A> in your <TT>CLASSPATH</TT> to build and run TML.
+</BODY>
+</HTML>
+
+<!-- END BODY -->
+
+</font>
+
+</td>
+</tr>
+</table>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+</body>
+
+</html>
+
+
+
+
+<!--
+     FILE ARCHIVED ON 12:41:25 Sep 29, 2010 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:05:51 Nov 24, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

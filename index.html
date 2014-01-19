@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>ANTLR Parser Generator</title>
+<meta name="keywords" content="language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate" />
+<meta name="description" content="ANTLR: ANother Tool for Language Recognition, (formerly PCCTS) is a language tool that provides a framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions." />
+<meta name="description" content="StringTemplate: a Java template engine used for any application generating text such as language translators and dynamic web sites; available in C# and Python as well." />
+</head>
+
+<body link="#336699" vlink="#6FA2D4" text="#000000">
+
+
+<!--
+Keywords: language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate
+
+Description: StringTemplate is a template engine used for any application generating text such as language translators and dynamic web sites.
+-->
+
+<!-- Terence Parr -->
+
+<!-- University of San Francisco -->
+
+<!-- parser generator -->
+
+<!-- tree parser -->
+
+<!-- tree walker -->
+
+<!-- java template engine -->
+
+<!-- python template engine -->
+
+<!-- C# template engine -->
+
+<!-- code generation -->
+
+<!-- language translation -->
+
+<!-- C++, C#, Java, Python, C -->
+
+<div align="center">
+<!-- BEGIN NAVIGATION -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="right">
+<font size="2" face="arial,helvetica"><strong><a href="http://www.antlr2.org/">Home</a></strong> |
+<strong><a href="http://www.antlr2.org/download.html">Download</a></strong> |
+ 
+<strong><a href="http://www.antlr.org/wiki">Wiki</a></strong> |
+<strong><a href="http://www.antlr2.org/about.html">About ANTLR</a></strong> |
+<strong><a href="http://www.antlr2.org/misc/feedback">Feedback</a></strong> |
+<strong><a href="http://www.antlr.org/support.html">Support</a></strong> |
+</font><br>
+<img src="http://www.antlr2.org/images/shim.gif" width="780" height="5" alt="" border="0"><br>
+</td>
+</tr>
+</table>
+<!-- END NAVIGATION -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- BEGIN BANNER -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" width="499">
+<a href="http://www.antlr2.org/"><img src="http://www.antlr2.org/images/logo-head-v2.gif" width="499" height="48" alt="" border="0"></a>
+</td>
+<td align="left" width="100%" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/logo-head.gif" width="1" height="1" alt="" border="0"></td>
+
+<td align="right" valign="top" width="150" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699"><img src="http://www.antlr2.org/images/shim.gif" width="150" height="8" alt="" border="0"><br>
+<font size="2" face="arial,helvetica"><strong>Latest version is <font color="#ffffff">2.7.7.</font><br>
+Download now! &raquo;</strong></font><br></td>
+
+
+<td align="right" valign="middle" width="128" background="http://www.antlr2.org/images/head-shim.gif" bgcolor="#336699">
+<a href="http://www.antlr2.org/download.html"><img src="http://www.antlr2.org/images/button-download.gif" width="122" height="29" alt="Download" align="right" border="0"></a></td>
+</tr>
+</table>
+<!-- END BANNER -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- BEGIN BODY -->
+<!-- pale green -->
+<table width="100%" cellpadding="10" cellspacing="0" border="0">
+
+<tr>
+<td bgcolor="#CBFF7D" width="33%" valign="top">
+<font face="arial,helvetica" size="2">
+<img src="http://www.antlr2.org/images/parr-head-angled.gif" width="73" alt="Terence Parr" align="right" vspace="3" hspace="8" border="0">
+<b>What is ANTLR?</b><br>
+<b>ANTLR</b>, ANother Tool for Language Recognition, (formerly PCCTS) is a
+language tool that provides a framework for constructing recognizers,
+compilers, and translators from grammatical descriptions containing
+Java, C#, C++, or Python actions.  ANTLR provides excellent support for tree construction, tree walking, and translation.  There are currently about <b>5,000</b> ANTLR source downloads a month.
+
+<br><br>
+If you like ANTLR, check out Terence's <a href="http://www.stringtemplate.org/"><b>StringTemplate template engine</b></a>.
+
+<br><br>
+<b>Terence Parr</b> is the maniac behind ANTLR and has been working on ANTLR since 1989. He is a professor of computer science at the <a href="http://www.cs.usfca.edu/"><b>University of San Francisco</b></a>.
+<br><br>
+
+<b><a href="http://www.antlr2.org/about.html"><b>More...</b></a><br></font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0"><br>
+</td>
+<td bgcolor="#CBFF7D" width="33%" valign="top">
+<font face="arial,helvetica" size="2">
+<b>Testimonials</b><br><br>
+
+<i>Using this to parse a custom lightweight scripting language. It was quick...</i><br>
+<b>Maximus</b><br><br><i>I am a graduate from China and just learning your ANTLR. It's good but...</i><br>
+<b>Wang Bin</b><br><br><i>I'm actually really liking ANTLR! I have a pretty darn good velocity with...</i><br>
+<b>Guido van Rossum</b><br><br><i>Antlr v3 is awesome. I used Antlr v2 for several projects, but my latest...</i><br>
+<b>Jeffrey M. Barber</b><br><br>
+<a href="http://www.antlr.org/testimonial/list.html"><b>More...</b></a><br>
+</font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0"><br>
+</td>
+
+<td bgcolor="#CBFF7D" width="33%" valign="top">
+<font face="arial,helvetica" size="2">
+<b>Showcase</b><br>
+<a href="http://zoneinfo-tz.codehaus.org/"><b>Zoneinfo TZ</b></a><br>
+<b>Christopher Hunt</b> <i>Sun Apr 3, 2011 16:14</i><br>
+Zoneinfo TZ is a Java time zone library that parses zoneinfo files and...<br><br><a href="http://www.cbioportal.org/cgx/onco_query_lang_desc.jsp"><b>Oncology query language (OQL)</b></a><br>
+<b>Arthur Goldberg</b> <i>Wed Mar 16, 2011 13:20</i><br>
+An oncology query language (OQL), which enables cancer researchers to refine...<br><br><a href="http://www.processing.org/"><b>Processing</b></a><br>
+<b>Ben Fry & Casey Reas</b> <i>Fri Oct 8, 2010 20:34</i><br>
+Creative coding language and IDE uses ANTLR for source preprocessing<br><br>
+<a href="http://www.antlr.org/showcase/list.html"><b>More...</b></a>
+<br><br><br>
+See the latest on <a href="http://www.antlr.org/"><b>ANTLR v3</b></a> and
+<a href="http://www.antlr.org/works/index.html"><b>ANTLRWorks dev tool</b></a>.</font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0"><br></td>
+</tr>
+</table>
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- BEGIN SEARCH -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<form METHOD=GET ACTION="http://www.google.com/search">
+<tr>
+	<td align="middle" valign="middle" bgcolor="#4679AC" width="88"><img src="http://www.antlr2.org/images/shim.gif" width="88" height="1" alt="" border="0"><br><img src="http://www.antlr2.org/images/search.gif" width="68" height="9" alt="Search" border="0"></td>
+	<td width="100%" valign="top" bgcolor="#4679AC"><img src="http://www.antlr2.org/images/shim.gif" width="1" height="3" alt="" border="0"><br><input type="text" name="query" size="30" style="width:100%; font-family:geneva,arial; background-color:#ffffff; color:#000000; font-size:10pt;"><br>
+	</td>
+	<td bgcolor="#4679AC" valign="middle" width="61">
+	<input type=hidden name=q value="site:antlr2.org">
+	</td>
+	</tr>
+</form>
+</table>
+<!-- END SEARCH -->
+
+<div align="center"><img src="http://www.antlr2.org/images/shim.gif" width="780" height="6" alt="" border="0"></div>
+
+<!-- pale green -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+<tr>
+<td bgcolor="#ffffff" width="33%" valign="top">
+	<table width="100%" cellpadding="5" cellspacing="0" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>News</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td><font face="arial,helvetica" size="2">
+<a href="http://www.antlr.org/works/index.html"><b>ANTLRWorks 1.0b10 released</b></a><br>
+<b>Jean Bovet</b> <i>Thu Apr 19, 2007 15:31</i><br>
+Get it while it's hot!<br><br><a href="http://www.antlr.org/v3"><b>ANTLR 3.0b7 released!</b></a><br>
+<b>Terence Parr</b> <i>Thu Apr 12, 2007 14:33</i><br>
+Lots of bug fixes etc...heading for v3 release in May<br><br><a href="http://www.antlr.org/summer-of-code/2007/index.html"><b>Proposed: 2007 Google Summer Of Code ANTLR Projects</b></a><br>
+<b>Terence Parr</b> <i>Sun Mar 11, 2007 13:56</i><br>
+Hi. I just submitted the following proposal for 2007 Google Summer Of Code...<br><br><a href="http://www.pragmaticprogrammer.com/titles/tpantlr/index.html"><b>ANTLR v3 beta book available in PDF</b></a><br>
+<b>Terence Parr</b> <i>Tue Feb 6, 2007 11:15</i><br>
+The beta of my upcoming ANTLR v3 book is available in PDF form. As of this...<br><br>
+<img src="http://www.antlr.org/images/shim.gif" width="240" height="1" alt="" border="0">
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="5" cellspacing="0" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>File Sharing</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td><font face="arial,helvetica" size="2">
+<a href="http://www.antlr2.org/share/1169924912745/antlr3-task.zip"><b>ANTLR v3 task for Ant</b></a><br>
+<b>Juergen Pfundt</b> <i>Mon May 16, 2011 14:34</i><br>
+[updated] A task for Ant that knows about building ANTLR v3 grammars.<br><br><a href="http://www.antlr2.org/share/1296845937057/AntlrJavaRuntime.tar.gz"><b>Android port of the ANTLR Java Runtime</b></a><br>
+<b>Earlence Fernandes of CRePE project</b> <i>Fri Feb 4, 2011 10:58</i><br>
+A tarball that can be overlayed on top of an existing antlr 3.3 distribution....<br><br><a href="http://xqgrammar.googlecode.com/"><b>XQuery Grammar in Antrl</b></a><br>
+<b>Adam Retter</b> <i>Thu Oct 28, 2010 06:49</i><br>
+ANTLR 3 grammar and generated Java parser for XQuery with Update, Scripting...<br><br><a href="http://mdsl.sourceforge.net/"><b>mdsl</b></a><br>
+<b></b> <i>Sun Oct 10, 2010 23:30</i><br>
+mdsl is a simple interpreted language built on top of java.<br><br>
+<a href="http://www.antlr2.org/share/list.html"><b>More...</b></a></font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0">
+	</td>
+	</tr>
+	</table>
+
+</td>
+
+<td bgcolor="#ffffff" width="33%" valign="top">
+	<table width="100%" cellpadding="5" cellspacing="0" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>Documentation</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td><font face="arial,helvetica" size="2">
+<a href="http://www.antlr.org/wiki"><b>ANTLR Wiki</b></a><br>
+Mostly v3 content.<br><br>
+<a href="http://www.antlr2.org/doc/antlr_2_7_5_ChineseVer.pdf"><b>ANTLR 2.7.5 manual translated to Chinese</b></a><br><br>
+<a href="http://www.pragmaticprogrammer.com/titles/tpantlr/index.html"><img align=right src="http://www.antlr.org/images/antlr.book.jpg" width=95></a><a href="http://www.pragmaticprogrammer.com/titles/tpantlr/index.html"><b>The Definitive ANTLR Reference: Building domain-specific languages</b></a><br> Terence's ANTLR v3 book coming out in Early May, 2007.  You can buy the PDF of it now.  ANTLR v3 will ship before the book is printed.<br><br>
+<a href="http://www.cs.usfca.edu/~parrt/course/652/lectures/antlr.html"><b>An introduction to ANTLR</b></a><br>
+<b>Terence Parr</b> <i>Fri Jun 10, 2005 11:00</i><br>
+What is ANTLR all about? Gives a brief introduction to syntax and what...<br><br><a href="http://www.antlr2.org/doc/getting-started.html"><b>Getting started</b></a><br>
+<b>Terence Parr</b> <i>Fri Jul 4, 2003 15:00</i><br>
+Getting started with ANTLR. Beginners! Please start here. :)<br><br><a href="http://www.antlr2.org/doc/index.html"><b>ANTLR 2.7.5 Documentation</b></a><br>
+<b>Terence Parr</b> <i>Thu Jul 3, 2003 15:00</i><br>
+Main ANTLR user's manual.<br><br><a href="http://www.cs.usfca.edu/~parrt/course/652/index.html"><b>Programming Languages Course Lecture Notes/Audio</b></a><br>
+<b>Terence Parr</b> <i>Thu May 15, 2003 00:00</i><br>
+A graduate course taught Spring 2003 at the University of San Francisco...<br><br>
+<a href="http://www.antlr2.org/documentation/list"><b>More...</b></a></font>
+</td>
+</tr>
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>Grammars</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<font face="arial,helvetica" size="2">
+<a href="http://www.harward.us/~nharward/antlr/csv.g"><b>CSV grammar</b></a><br>
+<b>Nathaniel Harward</b> <i>Fri May 13, 2011 10:08</i><br>
+While looking for a simple CSV grammar I saw the one in the ANTLR wiki...<br><br><a href="http://www.antlr2.org/grammar/1304304798093/SQL2003_Grammar.zip"><b>ISO SQL 2003 Grammar</b></a><br>
+<b>Douglas Godfrey</b> <i>Sun May 1, 2011 19:53</i><br>
+The ISO SQL 2003 grammar will now build successfully but it requires a...<br><br><a href="http://www.antlr2.org/grammar/1303962156579/SQL2003_Grammar.zip"><b>updated ISO SQL 2003 Grammar</b></a><br>
+<b>Douglas Godfrey</b> <i>Wed Apr 27, 2011 20:42</i><br>
+here is an updated version of my ISO SQL 2003 grammar.<br><br><a href="http://www.antlr2.org/grammar/1302709126925/SQL2003_Grammar.zip"><b>ISO SQL 2003 Grammar </b></a><br>
+<b>Douglas Godfrey</b> <i>Wed Apr 13, 2011 08:38</i><br>
+This is an initial pass at converting the ISO SQL 2003 grammar to Antlr....<br><br>
+<a href="http://www.antlr.org/grammar/list.html"><b>More...</b></a></font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0">
+	</td>
+	</tr>
+	</table>
+</td>
+
+<td bgcolor="#ffffff" width="33%" valign="top">
+	<table width="100%" cellpadding="5" cellspacing="0" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>Articles</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td><font face="arial,helvetica" size="2">
+<a href="http://wiki.netbeans.org/Integrating_ANTLR_without_learning_Ant"><b>Integrating ANTLR without learning Ant (in NetBeans)</b></a><br>
+<b>Jeff Allen</b> <i>Sun May 22, 2011 07:09</i><br>
+<br><br><a href="http://wiki.netbeans.org/Integrating_ANTLR_without_learning_Ant"><b>Integrating ANTLR without learning Ant (in NetBeans)</b></a><br>
+<b>Jeff Allen</b> <i>Sat May 21, 2011 07:05</i><br>
+This article shows you how to incorporate ANTLR within a NetBeans build,...<br><br><a href="http://w3.msi.vxu.se/users/tgumsi/antlr/ANTLRtutorial.pdf"><b>Getting Started with ANTLR</b></a><br>
+<b>Tobias Gutzmann</b> <i>Tue Apr 5, 2011 09:05</i><br>
+This short text is targeted to students who want to start using ANTLR....<br><br><a href="http://www.antlr.org/papers/LL-star-PLDI11.pdf"><b>LL(*): The Foundation of the ANTLR Parser Generator</b></a><br>
+<b>Terence Parr and Kathleen Fisher</b> <i>Sat Feb 5, 2011 13:07</i><br>
+[This is a draft of paper accepted to PLDI 2011] Despite the power of Parser...<br><br>
+<a href="http://www.antlr2.org/article/list.html"><b>More...</b></a></font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0">
+	</td>
+	</tr>
+	</table>
+
+	<table width="100%" cellpadding="5" cellspacing="0" border="0">
+	<tr>
+	<td bgcolor="#CBFF7D">
+	<font face="arial,helvetica" size="2">
+	<b>Mailing List Messages</b><br>
+	</td>
+	</tr>
+	<tr>
+	<td><font face="arial,helvetica" size="2">
+Subject: Fw:urgent<br>
+<b>yue xin</b> <i>Mon, 18 Jul 2011 17:25:12 +0800 (CST)</i><br><br>Subject: urgent<br>
+<b>yue xin</b> <i>Mon, 18 Jul 2011 17:15:39 +0800 (CST)</i><br><br>Subject: how to configure the antlr jar in unix for<br>
+<b>Parsiad Azimzadeh</b> <i>Mon, 18 Jul 2011 01:57:24 -0700</i><br><br>Subject: how to configure the antlr jar in unix for C/c++<br>
+<b>Asjad Naaz</b> <i>Mon, 18 Jul 2011 13:00:40 +0530</i><br><br>
+<a href="http://www.antlr.org/pipermail/antlr-interest"><b>More...</b></a></font>
+<img src="http://www.antlr2.org/images/shim.gif" width="240" height="1" alt="" border="0">
+	</td>
+	</tr>
+	</table>
+
+</td>
+</tr>
+</table>
+<!-- END BODY -->
+
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--
+     FILE ARCHIVED ON 14:01:02 Jul 18, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 17:59:43 Nov 24, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

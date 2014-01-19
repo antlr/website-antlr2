@@ -1,0 +1,38 @@
+
+                         PC BINARIES
+
+                       January 1, 1995
+
+
+These packages were assembled by David Seidel (75342.2043@compuserve.com or
+dseidel@delphi.com).  Any questions can be posted to the PCCTS newsgroup
+(comp.compilers.tools.pccts) or via email.
+
+Terence Parr just put pcctsw32.zip up, which is known to work on NT/95.
+March 12, 1997.
+
+To decode the ".zip" files, use PKUNZIP.EXE or UNZIP.EXE.  If you have neither
+one, grab UNZIP.EXE from this directory.
+
+There are three sets of binaries here: one for 32-bit MS-DOS built with the
+djgpp port of gcc, one for 32-bit MS-DOS built with Borland C++ (bcc) 4.02
+with the DOS PowerPak, and one for Windows NT console (Intel machines) built
+with Microsoft Visual C++ 2.0.  This chart will tell you files you need
+depending on which package you want.
+
+   Platform       Files             Contents
+   --------       -----             --------
+   DOS (gcc)      pcctsgcc.zip      PCCTS executables
+                  gccbin.zip        djgpp extender binaries
+
+   DOS (bcc)      pcctsbcc.zip      PCCTS executables
+                  bccbin.zip        Borland extender binaries
+
+   NT             pcctsnt.zip       PCCTS executables
+
+Note that the gcc and bcc packages each require a support file.  I've put them
+into separate files because PCCTS generally gets updated faster than the
+compilers do :-).
+
+Have fun,
+Dave

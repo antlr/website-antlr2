@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<title>PCCTS Frequently Asked Questions</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 1.1">
+<base target="new_frame">
+</head>
+
+<body background="images/background-rough-grey.gif">
+<h2>PREAMBLE </h2>
+<p><font size=1><i>Skip directly to the questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font> </p>
+<p>This is the Frequently Asked Questions (FAQ) list for the Purdue Compiler Construction Tool Set (PCCTS). The FAQ is currently at version 2.2. Any suggestions 
+for improving this document should be forwarded to <a href="mailto:mtr@igs.net">mtr@igs.net</a>. PLEASE DO NOT BUG TERENCE PARR ABOUT THE CONTENTS OF THIS 
+DOCUMENT! He's busy enough enhancing PCCTS and making a go of a consulting business without having to contend with the FAQ. </p>
+<p>This FAQ is based partly on the first draft of the FAQ written by Steve Robenalt as supplied by Terence Parr. It has since then been heavily edited and had several 
+new sections added. It was finally converted to HTML and published on the World Wide Web by Michael T. Richter.</p>
+<h3>What is in the FAQ </h3>
+<p>The FAQ contains routine, non-technical to semi-technical questions about PCCTS and its related tools. Questions along the line of &quot;What is PCCTS and where 
+can I get it?&quot; will be found in here. </p>
+<p>Two new features begins with version 1.4 of the FAQ. The first of these, a list of uses to which PCCTS has been put, along with some contact names if applicable, 
+is intended to provide new users with an idea of what kinds of things PCCTS can be used for. The second of these, a list of consultants willing to do 
+PCCTS-specific consulting, is provided as a service to the PCCTS-using community as a whole. </p>
+<p>Anyone who wants their product or their services listed in either or both sections can feel free to drop me a line at the e-mail address listed above. </p>
+<p><i><u>Please note</u></i>: both of these FAQ features are separate pages on the World Wide Web as of revision 2.0 of the FAQ. Follow the menu frame to find them.</p>
+<h3>What is NOT in the FAQ </h3>
+<p>The FAQ is not an appropriate forum for answering questions about how to use PCCTS and its related tools. Consult Question 2.2 below for details on other 
+documentation sources. </p>
+<h3>Outstanding Issues </h3>
+<p>It would be nice if I could get a more complete list of sites which carry PCCTS. Of special interest would be mirror sites outside of the USA. </p>
+<p>I can always use more work. Feel free to send in new questions, comments about format and style and anything else you would like to see in this FAQ. Please note 
+that, to avoid unnecessary duplication of effort, I will not place questions of a deeply technical nature into this FAQ. Tom Moog's &quot;<a href="http://www.mcs.net/~tmoog/pccts.html">Notes for New Users</a>&quot; file (c.f. 
+below) is the best place to put these. Contact Tom (<a href="mailto:tmoog@polhode.com">tmoog@polhode.com</a>) for technical issues. </p>
+<h3>How to Contact the FAQ Editor </h3>
+<p>The editor of this FAQ, Michael T. Richter, can be reached by e-mail as <a href="mailto:mtr@igs.net">mtr@igs.net</a>. Since he maintains this FAQ in his Copious Free Time, there may be a few 
+days' turnaround in processing incoming suggestions and requests. Rest assured, however, that all incoming e-mail is read and responded to where necessary. To 
+speed processing, place the string &quot;PCCTS FAQ:&quot; somewhere in the subject header. </p>
+<h3><i>Important Note</i> </h3>
+<p>If I have forgotten to credit someone appropriately, please send me e-mail. Any corrections requested will be immediately entered into the FAQ for the next 
+release. I'm not trying to steal anyone's thunder! </p>
+<hr>
+<h2><a name="Questions">QUESTIONS </a></h2>
+<h3><a href="#SEC1">Section 1</a> </h3>
+<blockquote>
+<p><a href="#QUE1_1">1.1 What is PCCTS?</a> </p>
+</blockquote>
+<blockquote>
+<p><a href="#QUE1_2">1.2 Where can I get PCCTS?</a> </p>
+<p><a href="#QUE1_3">1.3 How much does it cost?</a> </p>
+</blockquote>
+<h3><a href="#SEC2">Section 2 </a></h3>
+<blockquote>
+<p><a href="#QUE2_1">2.1 What can I do with PCCTS?</a> </p>
+<p><a href="#QUE2_2">2.2 What documentation is available?</a> </p>
+<p><a href="#QUE2_3">2.3 What grammars are available?</a> </p>
+<p><a href="#QUE2_4">2.4 What platforms can I use it on?</a> </p>
+<p><a href="#QUE2_5">2.5 What is the difference between PCCTS and YACC/LEX?</a> </p>
+</blockquote>
+<h3><a href="#SEC3">Section 3 </a></h3>
+<blockquote>
+<p><a href="#QUE3_1">3.1 What is SORCERER?</a> </p>
+</blockquote>
+<h3><a href="#SEC4">Section 4 </a></h3>
+<blockquote>
+<p><a href="#QUE4_1">4.1 Where can I get PC-compatible tools for working with PCCTS?</a> </p>
+<p><a href="#QUE4_2">4.2 Why is this FAQ not in comp.answers or on rtfm.mit.edu?</a> </p>
+<p><a href="#QUE4_3">4.3 How do I port PCCTS to Win32?</a> </p>
+</blockquote>
+<hr>
+<h2><a name="SEC1">SECTION 1 </a></h2>
+<h3><a name="QUE1_1">1.1 What is PCCTS?</a> </h3>
+<p>PCCTS is the Purdue Compiler Construction Tool Set, so named because it began as a project in the School of Electrical Engineering at Purdue University. Several 
+releases of the tools have been made publicly available; the current version is 1.33. </p>
+<p>PCCTS consists of two tools, ANTLR (Another Tool for Language Recognition) and DLG (DFA-based Lexical analyser Generator), assorted support files, 
+sample Pascal and C grammars, and full source code. ANTLR is a functional equivalent of YACC (Yet Another Compiler Compiler), which is distributed with 
+most UNIX platforms. Both tools generate parsers from a BNF-like grammar description. Similarities and differences are covered under a later section. </p>
+<p>DLG is a functional equivalent of LEX which is also distributed with most UNIX platforms. These tools generate lexical analysers (scanners) from a set of 
+regular-expression rules. </p>
+<p>Another tool which is commonly associated with PCCTS is SORCERER, which is a tree parser generator that uses a description grammar similar to that of 
+ANTLR to build tree-parsers (tree walkers). This tool will be covered in detail in a later section. Sorcerer will soon be incorporated with PCCTS. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE1_2">1.2 Where can I get PCCTS? </a></h3>
+<p>The principal source of PCCTS is from the primary anonymous ftp site: </p>
+<blockquote>
+<p><a href="ftp://ftp.parr-research.com/pub/pccts">ftp://ftp.parr-research.com/pub/pccts</a> </p>
+</blockquote>
+<p>Mirror sites exist at: </p>
+<blockquote>
+<p><a href="ftp://ftp.uu.net/languages/tools/pccts">ftp://ftp.uu.net/languages/tools/pccts</a> </p>
+<p><a href="ftp://ftp.th-darmstadt.de/pub/programming/languages/compiler-compiler/pccts">ftp://ftp.th-darmstadt.de/pub/programming/languages/compiler-compiler/pccts</a> </p>
+</blockquote>
+<p>and possibly many other sites. Using archie may help you locate other sites if you are unable to access these for any reason. </p>
+<p>The <a href="news:comp.compilers.tools.pccts">comp.compilers.tools.pccts</a> newsgroup (actually the mailing list digest) is archived at the ftp sites in: </p>
+<blockquote>
+<p><a href="ftp://ftp.parr-research.com/pub/pccts/comp.compilers.tools.pccts">ftp://ftp.parr-research.com/pub/pccts/comp.compilers.tools.pccts</a> </p>
+</blockquote>
+<p>This archive appears to have stopped as of November 1994, however. </p>
+<p>If you are unable to use ftp to access these files, you may want to consider the following alternatives: </p>
+<blockquote>
+<p>e-mail: send a request to <a href="mailto:pccts@ecn.purdue.edu">pccts@ecn.purdue.edu</a> with any &quot;Subject:&quot; line. </p>
+<p>floppy disk or CD-ROM: don't hold your breath... </p>
+</blockquote>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE1_3">1.3 How much does it cost? </a></h3>
+<p>To quote from the source itself: </p>
+<blockquote>
+<p><cite>SOFTWARE RIGHTS</cite> </p>
+</blockquote>
+<blockquote>
+<p><cite>We reserve no LEGAL rights to the Purdue Compiler Construction Tool Set (PCCTS) -- PCCTS is in the public domain. An individual or 
+company may do whatever they wish with source code distributed with PCCTS or the code generated by PCCTS, including the 
+incorporation of PCCTS, or its output, into commercial software.</cite> </p>
+</blockquote>
+<blockquote>
+<p><cite>We encourage users to develop software with PCCTS. However, we do ask that credit is given to us for developing PCCTS. By &quot;credit&quot;, 
+we mean that if you incorporate our source code into one of your programs (commercial product, research project, or otherwise) that you 
+acknowledge this fact somewhere in the documentation, research report, etc... If you like PCCTS and have developed a nice tool with the 
+output, please mention that you developed it using PCCTS. In addition, we ask that this header remain intact in our source code. As long 
+as these guidelines are kept, we expect to continue enhancing this system and expect to make other tools available as they are completed.</cite> </p>
+</blockquote>
+<p>Please note that Terence Parr, the primary author, has stated that the PCCTS tools will always be free. He does, however, plan to release several commercial tools 
+which will enhance the functionality of PCCTS. </p>
+<p><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font> </p>
+<hr>
+<h2><a name="SEC2">SECTION 2 </a></h2>
+<h3><a name="QUE2_1">2.1 What can I do with PCCTS?</a> </h3>
+<p>The answer to this question depends on whether you acquired PCCTS with a project or goal in mind, or if you acquired it to learn more about compilers and tools. 
+In either case, you will probably want to check out the tutorials which are available at the same ftp sites listed above in one of the older distribution directories. 
+There are two tutorials for ANTLR and DLG which have documentation and sample code included. These will help explain how to write a grammar, and how to 
+build appropriate semantic actions into the grammar. Note that these tutorials use &quot;ancient&quot; PCCTS technologies. Terence has no time to update them, however, so 
+they will have to stand for now. </p>
+<p>If you wish to learn more at this point, you'll probably want to have a look at the ANSI C grammar and the C++ grammar at the FTP site. These grammars are 
+described briefly below. If, on the other hand, you already have a project in mind, you should probably just jump right in building or transcribing the grammar. It 
+would be a good idea to review all of the relevant documentation as described below before beginning, since some of the older methods have been superseded by 
+newer, more powerful ones. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE2_2">2.2 What documentation is available? </a></h3>
+<p>At the time of this printing, the best single source of documentation for PCCTS v1.33 is The Book. (It is more formally entitled &quot;Language Translation Using 
+PCCTS and C++: A Reference Guide&quot; but has been called The Book for so long that I'm not about to change it.) An &quot;Initial Release to Internet for Review and 
+General Bashing&quot; is available at the main FTP site as: </p>
+<blockquote>
+<p><a href="ftp://ftp.parr-research.com/pub/pccts/Book/reference.ps">ftp://ftp.parr-research.com/pub/pccts/Book/reference.ps</a> </p>
+<p><a href="ftp://ftp.parr-research.com/pub/pccts/Book/reference.ps.gz">ftp://ftp.parr-research.com/pub/pccts/Book/reference.ps.gz</a> </p>
+</blockquote>
+<p>After publication of The Book, it will be available commercially at a reasonable (hopefully!) cost. Terence will be sure to notify us of precisely how to get The Book 
+after publication. </p>
+<p>Another ABSOLUTELY ESSENTIAL source of documentation for PCCTS is Tom Moog's &quot;Notes for New Users of PCCTS&quot; document. It is appended to The 
+Book and is also available at: </p>
+<blockquote>
+<p><a href="http://www.mcs.net/~tmoog/pccts.html">http://www.mcs.net/~tmoog/pccts.html</a> </p>
+</blockquote>
+<p>The distribution tar files have several documents targetting platform-specific issues. These are named &quot;NOTES.&lt;platform&gt;&quot; and should be read by anyone not 
+compiling to the canonical UNIX platform which is the presumed default. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE2_3">2.3 What grammars are available? </a></h3>
+<p>Several sample grammars will be available at the FTP site under /pub/pccts/contrib. These include ansi.tar, a sophisticated ANSI C grammar which uses all of the 
+latest tricks, and a Pascal grammar which used to be distributed with the v1.06 PCCTS toolset. A very sophisticated C++ grammar is also at the FTP site. None of 
+the grammars generates a full compiler, but rather a parser which executes some kind of action on the source file. </p>
+<p>Other grammars are being built by many users of these tools. If you would like to know about the availability of a particular grammar, please post a question to the 
+newsgroup. Someone else may be working on something similar and may be willing to share their work. </p>
+<p>For some more detailed information, consult the following URL: </p>
+<blockquote>
+<p><a href="http://www.igs.net/~mtr/software-development/pccts-grammar.htm">http://www.igs.net/~mtr/software-development/pccts-grammar.htm</a> </p>
+</blockquote>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE2_4">2.4 What platforms can I use it on? </a></h3>
+<p>PCCTS was written in such a way to make it as flexible as possible to build and run it under as many different operating systems and C/C++ compilers as possible. 
+It has been built successfully under many flavours of UNIX and many UNIX-like operating systems (NetBSD, FreeBSD, Linux), under OS/2 and Windows 
+(including NT and 95), and even under DOS using DJGPP (GCC with DOS extender) and Watcom C/C++. However, it may be difficult to build using a 16-bit 
+compiler since the current version contains more than 64k (1 segment) of static data, which causes problems with most DOS C compilers. Most 32-bit C compilers 
+should work with minimal trouble, using K&amp;R, ANSI, or C++ compiler modes. </p>
+<p>One problem which is reported frequently upon the initial build of ANTLR and DLG (as happens using the installation program) is the failure of the build process 
+due to the inability to invoke ANTLR or DLG to build themselves. This is not a problem with GNU Make, but does occur frequently with other versions of make 
+from other vendors. The solution to the problem is to simply comment out the target lines in the Makefiles for ANTLR and DLG which try to invoke ANTLR 
+and/or DLG to build themselves. The C files which would be created by these target lines already exist, so the build will proceed normally once these lines are 
+commented out. After the initial build, these lines can be restored to their original state for all subsequent builds. </p>
+<p>Note that if you try to build first and see these errors, you should unpack all of the files from the original distribution since the failed build may have written over the 
+valid files before failing. Using touch to make the target files appear to be up to date may or may not work, depending on which version of make you are using. 
+Alternatively, since the C files necessary for building the tool have already been generated, commenting out the dependencies which require ANTLR/DLG will solve 
+the problem. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE2_5">2.5 What is the difference between PCCTS and YACC/LEX? </a></h3>
+<p>This question is obviously flame-bait, but it does come up and will continue to do so. Thus, here is a brief summary of some distinctions: </p>
+<ol>
+<li>ANTLR generates predicated LL(k) parsers, YACC generates LALR(1) parsers. </li>
+<li>ANTLR-generated code is human-readable since it consists of mutually recursive C/C++ functions. YACC code is generally unreadable since it generally 
+consists of a table of integers. </li>
+<li>ANTLR provides more flexibility in assigning actions to a grammar since the introduction of an action cannot introduce ambiguities as it can in a YACC 
+grammar. Further arguments can be passed to rules rather than just return values from rules since parsing is from the top down. </li>
+<li>YACC is widely used, well documented, and has many grammars readily available. On the other hand, YACC does not have a good, standard C++ 
+interface, nor can it build trees, nor does it accept extended BNF grammars. Further, it requires that separate lexical and syntactic descriptions be maintained 
+and consistent. </li>
+</ol>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<hr>
+<h2><a name="SEC3">SECTION 3 </a></h2>
+<h3><a name="QUE3_1">3.1 What is SORCERER?</a> </h3>
+<p>SORCERER is a tool for generating tree parsers and tree transformers and is related to trees as ANTLR is related to text. It is more suitable for the class of 
+translation problems lying between those solved by code-generator generators and by full source-to-source translator generators. </p>
+<p>SORCERER generates simple, flexible, top-down, tree parsers that, in contrast to code-generators, may execute actions at any point during a tree walk. 
+SORCERER accepts extended BNF notation, allows predicates to direct the tree walk with semantic and syntactic context information, and does not rely on any 
+particular intermediate form, parser generator, or other pre-existing application. Often a programmer has a front-end that constructs intermediate form trees and 
+simply wants to traverse the trees and execute a few actions. </p>
+<p>SORCERER shares several features with PCCTS including grammar description format, the use of semantic and syntactic predicates to direct the parse, and the 
+generation of readable C code. SORCERER parsers are LL(1), compared to LL(k) for ANTLR, but this places only minimal constraints on the type of trees which 
+can be parsed because programmers specifically design their intermediate forms/ASTs to be easy to walk. </p>
+<p>While SORCERER is designed to work very well in conjunction with PCCTS, it can also be used with any other tools that generate the minimally-defined form of 
+AST which SORCERER expects. The latest version is 1.00B15 and was recently heavily upgraded to handle tree transformations in a more reasonable manner. It 
+also comes with a number of support libraries. </p>
+<p>SORCERER will soon be integrated with PCCTS. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<hr>
+<h2><a name="SEC4">SECTION 4 </a></h2>
+<h3><a name="QUE4_1">4.1 Where can I get PC-compatible tools for working with PCCTS?</a> </h3>
+<p><a href="http://www.acs.oakland.edu">http://www.acs.oakland.edu</a> (or <a href="ftp://oak.oakland.edu">ftp://oak.oakland.edu</a>) is a *MAJOR* site worth a visit by seekers of free/shareware tools for a software development 
+environment. A PC-compatible TAR is there. GZIP is there also. You will also find ghostview and ghostscript there in the Simtel/msdos/postscrp directory. These 
+four tools are must-haves when dealing with Ter's postscript documentation on an MS-DOS/WINDOWS platform. Tom Moog's site, 
+<a href="http://www.mcs.net/~tmoog/pccts.html">http://www.mcs.net/~tmoog/pccts.html</a>, has links to various sources of such programs as well. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE4_2">4.2 Why is this FAQ not in comp.answers or on rtfm.mit.edu? </a></h3>
+<p>The current processes for placing material in the *.answers hierarchy (and by extension at rtfm) are baroque, bordering on silly. The editor of this FAQ maintains it 
+in his Copious Free Time and does not feel that a document well in excess of 64KB explaining how to post to these sites is valid or even remotely useful. </p>
+<p>Until the process to post to *.answers/rtfm is made saner, this editor will not do so. (If someone else wants to go through the headache, he can feel free to.) Yes, 
+the editor was in a very bad mood when writing this particular answer. He has remained in a bad mood about this particular subject in subsequent bouts of editing 
+as well. </p>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<h3><a name="QUE4_3">4.3 How do I port PCCTS to Win32? </a></h3>
+<p>Franz-Josef Kaiser was kind enough to post his answer to this question on the Web. Read of his experiences at: </p>
+<blockquote>
+<p><a href="http://iaipc80.iai.fzk.de/users/kaiser/pccts/pccts-nt.htm">http://iaipc80.iai.fzk.de/users/kaiser/pccts/pccts-nt.htm</a> </p>
+</blockquote>
+<h3><font size=1><i>Return to questions list by clicking </i></font><a href="#Questions"><font size=1><i>here</i></font></a><font size=1><i>.</i></font><font size=4> </font></h3>
+<hr>
+<p>You can reach me by e-mail at <a href="mailto:mtr@igs.net">mtr@igs.net</a>.</p>
+</body>
+
+</html>

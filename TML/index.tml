@@ -1,0 +1,165 @@
+Terence's Markup Language
+
+_Version 0.1_, March 24, 2004
+
+Terence Parr \
+University of San Francisco & jGuru
+
+ [_This doc is inadequate at best, but with the source and some samples, you
+can figure it out_. ;)]
+
+#### Useful links
+
+### Source, Doc
+
+o @(http://www.antlr.org/download/tml-0.1.tar.gz, download source, jar)
+o @(http://www.antlr.org/TML/index.tml, documentation/main page)
+o @(http://www.antlr.org/TML/org/antlr/tml, browse source)
+
+### Examples
+
+I do all of my course materials in TML; it's just fabulous for generating HTML, though I've given up using TML for anything but HTML.  I use LaTeX for papers.  Anyway, any {*.tml} file in these directories should give the idea.
+
+o @(http://www.cs.usfca.edu/~parrt/course/652/lectures)
+o @(http://www.cs.usfca.edu/~parrt/course/601/lectures)
+
+#### Introduction and Motivation
+
+Humans brains gravitate towards WYSIWYG editors because the formatted text is just the text with a visual layout and possibly some font twiddling like bold and italics.  In constrast, reading the computer representation of this (HTML, RTF<shudder>, PostScript) can be difficult.  Your brain has to filter out the formatting instructions to get at the text.
+
+The problems with WYSIWYG editors in my view are:
+
+1 They are very heavyweight (compared to a text editor)
+
+1 You are usually providing lots of formatting and layout instructions rather than "this is a title".  You end up spending a *lot* of time just laying out your text, which may not even make it into the book.
+
+1 While some WYSIWYG editors like Word provide styles so that you can say "this is a title", I found the layout interaction between styles cumbersome.  It is often difficult to get things to look right.  I also like to do search, replace operations on non word items like "find the next section".  Many editors won't allow this.
+
+1 Getting your document correctly converted into a different format like HTML, PDF, raw text, or whatever can be difficult with commercial products as they don't want to let you "escape."  You can get tied to a particular OS even.
+
+1 From my perusal of publishers' websites, they all say the same thing: don't format your text with anything beyond section markers and typewriter font changes.  No footnotes, no fancy tables etc...  I.e., they are going to ignore all your formatting anyway when you turn in the book.  They all will accept straight text.
+
+1 I like to think of my documents as "programs".  Being able to add a "plugin" that does something interesting with a text argument is cool and really useful.
+
+The alternative of choice for technical folks is to use a text-based formatting system like LaTeX or nroff or even HTML.  Again, though, you are providing formatting information not high-level document components.  DOCBOOK on the other hand has the high-level nature you want, but it adds so much markup that I find it very hard to read the text I'm writing.
+
+My solution to this problem is take the best of WYSIWYG and text-based systems and merge them into a system that covers 90% of my document needs.  This system, TML (_Terence's Markup Language_), is a Wiki-inspired document language that I've used successful to produce course materials, web pages, and slides.
+
+Consider writing a piece of email.  You specify your formatting visually with newlines and simple markup like \*bold this\* and so on.  The idea in TML is to use the visual information as markup for paragraphs and sections rather than explicit tags.  This allows you to read your document naturally in a text editor.  A translator on the back end can generate Lout, DOCBOOK, HTML, or whatever you want.
+
+This document describes the basic syntax of TML and, because it is written in itself, this document provides a simple example.
+
+
+#### Syntax
+
+The first line of any document is the title.  Sections are denoted with multiple # characters where {####} indicates the outermost section.  In other words, the bigger the visual display the more major the section.  All paragraphs start with a blank line.  Here is a simple TML document:
+
+<<
+A sample TML document
+
+This is the first paragraph.
+
+#### Outermost section
+
+Here is the first paragraph of the outermost section
+
+Here is the second paragraph of the outermost section
+
+### A nested section
+
+Here is the first paragraph of the nested section
+>>
+
+Bullet lists are just like you do in email text:
+
+<<
+o first bullet
+o second bullet
+>>
+
+To make numbered lists use
+
+<<
+1 first numbered item
+1 second numbered item
+>>
+
+For formatting words, you can use the following
+
+[
+*Operator* | *Meaning*
+----
+\{x\} | Teletype font
+----
+\*x\* | Bold font
+----
+\_x\_ | Italics font
+----
+\\x | Escape char x
+----
+\\ end of line | <br>; line break
+----
+\\ line by itself | <br><br> blank line
+----
+\ \ "x" | block quote ('"' preceded by two spaces)
+]
+
+Tables are done sort of visually:
+
+<<
+[
+*header col 1* | *header col 2*
+----
+row 1 col 1 | col 2
+----
+row 2 col 1 | col 2
+...
+]
+>>
+
+*Links*.  Use style {@(http://www.antlr.org)} and {@(http://www.antlr.org, ANTLR)}.
+
+*Plugins*.  {%foo(...)} invokes {org.tml.plugin.foo.translate(...)}, sending
+the result to the output file.
+
+Use
+<<
+%include("file")
+>>
+
+to include a file or 
+
+<<
+%include("file", code)
+>>
+
+to have it appear in {<pre>} tags.
+
+Use
+
+<<
+%output <<
+send this to the output
+\>>
+>>
+
+to send something straight to output.
+
+Can put a box around something:
+
+<<
+%box <<
+put this in a box
+\>>
+>>
+
+#### Running TML
+
+To run TML on your TML files, just run stdin to {org.antlr.tml.Tool}.  Here is the shell script I use to run tml via {$ tml foo} (takes {foo.tml} and makes {foo.html}):
+
+<<
+#!/bin/bash
+java org.antlr.tml.Tool < $1.tml >$1.html
+>>
+
+Note that you must have @(http://www.antlr.org/download.html, ANTLR) in your {CLASSPATH} to build and run TML.

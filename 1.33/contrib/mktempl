@@ -1,0 +1,192 @@
+# John Cavanaugh has donated this makefile template if you
+# prefer it over using genmk.
+#
+# Good luck, Terence Parr
+#
+################################################################################
+#               File: Makefile.lg
+#
+#            Creator: cavanaug@ecn.purdue.edu (John P Cavanaugh)
+#               Date: Wed Oct  5 14:26:35 EDT 1994
+#
+#  Comments/Concerns: <general comment and/or concerns about file>
+#
+################################################################################
+#  $Log$
+################################################################################
+
+
+################################################################################
+# File Information 
+################################################################################
+
+TARGET          = 
+
+PURECFILES      = 
+HEADERS         = 
+
+LEXFILES        = 
+YACCFILES       =
+
+ANTLRFILES      = 
+DLGFILES        = #parser.dlg
+
+LIBS            = 
+
+UNPURECFILES    = $(ANTLRFILES:.g=.c) $(DLGFILES:.dlg=.c) \
+						$(YACCFILES:.y=.c) $(LEXFILES:.l=.c)
+CFILES          = $(UNPURECFILES) $(PURECFILES)
+
+MAKEFILE        = Makefile
+DEPENDFILE      = Mkdepend
+TAGFILE         = tags
+
+OBJECTS         = $(CFILES:.c=.o)
+
+TAGSOURCE       = $(HEADERS) $(YACCFILES) $(LEXFILES) $(CFILES) \
+						$(DLGFILES) $(ANTLRFILES)
+ALLSOURCE       = $(HEADERS) $(YACCFILES) $(LEXFILES) $(PURECFILES) \
+                  $(DLGFILES) $(ANTLRFILES) $(MAKEFILE) $(DEPENDFILE) 
+
+CLEAN           = $(OBJECTS) $(TARGET) core lint *~ *.ln
+REALCLEAN       = $(CLEAN) $(UNPURECFILES) y.tab.? \
+						$(DEPENDFILE).bak $(DEPENDFILE) $(TAGFILE) 
+
+
+################################################################################
+# Program and Flag Information
+################################################################################
+
+ALLDEPEND       = $(UNPURECFILES) $(DEPENDFILE) $(TAGFILE) $(TARGET)
+
+CC              = gcc -ansi -O
+DEBUGFLAGS      = 
+CFLAGS          = $(DEBUGFLAGS) 
+CPPFLAGS        = $(PCCTSINC)
+LDFLAGS         = 
+DEFINES         = $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) 
+
+#DEPENDCMD       = makedepend -f $(DEPENDFILE) -- $(DEFINES) -- $(CFILES) 2>/dev/null
+DEPENDCMD       = $(CC) -M $(DEFINES) $(CFILES) > $(DEPENDFILE)
+
+INDENT          = indent
+INDENTFLAGS     = # These are defined in my ~/.indent.pro
+
+LEX             = flex
+LFLAGS          = -d
+
+YACC            = byacc
+YFLAGS          = -d
+
+ANTLR           = antlr
+AFLAGS          = -ga #-gd
+PCCTSINC        = -I/usr/local/include/pccts
+DLG             = dlg
+DFLAGS          = -ga -C2
+
+TAGS            = ctags
+TAGFLAGS        = -t -d -w
+
+TOUCH           = touch
+
+################################################################################
+# Personal Make Rules 
+################################################################################
+
+all:	 $(ALLDEPEND)
+
+
+################################################################################
+# Make Rules (You shouldnt have to edit below here)
+################################################################################
+
+clean:
+	rm -f $(CLEAN)
+
+depend: 
+	$(DEPEND) 
+
+indent: $(HEADERS) $(PURECFILES)
+		$(INDENT) $(INDENTFLAGS) $(HEADERS) $(PURECFILES)
+		@rm -f *~
+
+spotless:
+	rm -f $(REALCLEAN) 
+
+tag: $(TAGFILE)
+
+$(TAGFILE): $(TAGSOURCE) $(MAKEFILE)
+	$(TAGS) $(TAGFLAGS) -o $(TAGFILE) $(TAGSOURCE) 
+
+
+################################################################################
+# Basic Make Rules for Objects {*.o *.c *.l *.y}
+################################################################################
+
+$(TARGET): $(OBJECTS) $(LIBS) $(OBJFILES)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $(TARGET) $(LIBS)
+
+$(OBJECTS):	$(MAKEFILE)
+
+$(LEXFILES): $(MAKEFILE)
+	@$(TOUCH) $(LEXFILES)
+
+$(YACCFILES): $(MAKEFILE)
+	@$(TOUCH) $(YACCFILES)
+
+$(DLGFILES): $(MAKEFILE)
+	@$(TOUCH) $(DLGFILES)
+
+$(ANTLRFILES): $(MAKEFILE)
+	@$(TOUCH) $(ANTLRFILES)
+
+$(PURECFILES): $(MAKEFILE)
+	@$(TOUCH) $(PURECFILES)
+
+
+################################################################################
+# PCCTS Make Rules
+################################################################################
+.SUFFIXES: .dlg .g $(SUFFIXES)
+
+DLG.dlg=$(DLG) $(DFLAGS) 
+.dlg:
+	$(RM) $*.c
+	$(DLG.dlg) $< > $*.c
+	$(LINK.c) -o $@ $*.c -ll $(LDLIBS)
+	$(RM) $*.c
+.dlg.c :
+	$(RM) $@
+	$(DLG.dlg) $< > $@
+.dlg.o:
+	$(RM) $*.c
+	$(DLG.dlg) $< > $*.c
+	$(COMPILE.c) -o $@ $*.c
+	$(RM) $*.c
+
+ANTLR.g=$(ANTLR) $(AFLAGS)
+.g:
+	$(ANTLR.g) $<
+	$(LINK.c) -o $@ $*.c $(LDLIBS)
+.g.c:
+	$(ANTLR.g) $<
+.g.o:
+	$(ANTLR.g) $<
+	$(COMPILE.c) -o $@ $*.c
+
+
+################################################################################
+# File Dependencies
+################################################################################
+
+$(DEPENDFILE): $(CFILES) 
+	@if [ -f $(DEPENDFILE) ] ; \
+		then  echo "$(DEPEND) " ; \
+		      $(DEPEND) ; \
+		else echo "$(TOUCH) $(DEPENDFILE)" ; \
+			  $(TOUCH) $(DEPENDFILE) ; \
+			  echo "sleep 1; $(TOUCH) $(CFILES)" ; \
+			  sleep 1; $(TOUCH) $(CFILES) ; \
+	fi
+
+include $(DEPENDFILE)
